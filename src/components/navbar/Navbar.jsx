@@ -5,7 +5,6 @@ import "./Navbar.css";
 export default function Navbar() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -13,59 +12,65 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Check if user is logged in
-  useEffect(() => {
-    const checkAuthStatus = () => {
-      const user = localStorage.getItem("user");
-      setIsLoggedIn(!!user);
-    };
-
-    checkAuthStatus();
-    
-    // Listen for storage changes (login/logout from other tabs)
-    window.addEventListener("storage", checkAuthStatus);
-    
-    return () => window.removeEventListener("storage", checkAuthStatus);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setIsLoggedIn(false);
-    window.location.href = "/";
-  };
+  const navLinks = [
+    { label: "Home",    to: "/",        hash: null },
+    { label: "Recipes", to: null,       hash: "#recipes" },
+    { label: "Explore", to: "/explore", hash: null },
+    { label: "Profile", to: "/profile", hash: null },
+  ];
 
   return (
     <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
-      <h1 className="logo">Nuvia</h1>
 
+      {/* ── Logo ── */}
+      <Link to="/" className="logo-link">
+        <h1 className="logo">
+          <span className="logo-n">N</span>uvia
+        </h1>
+        <span className="logo-tagline">Culinary Experiences</span>
+      </Link>
+
+      {/* ── Nav Links ── */}
       <div className="links">
-        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
-          Home
-        </Link>
-        <a href="#recipes">Recipes</a>
-        <Link
-          to="/explore"
-          className={location.pathname === "/explore" ? "active" : ""}
-        >
-          Explore
-        </Link>
-        <Link
-          to="/profile"
-          className={location.pathname === "/profile" ? "active" : ""}
-        >
-          Profile
-        </Link>
+        {navLinks.map(({ label, to, hash }) => {
+          const isActive = to ? location.pathname === to : false;
+
+          if (hash) {
+            return (
+              <a key={label} href={hash} className={`nav-link ${isActive ? "active" : ""}`}>
+                <span className="link-text">{label}</span>
+                <span className="link-underline"></span>
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={label}
+              to={to}
+              className={`nav-link ${isActive ? "active" : ""}`}
+            >
+              <span className="link-text">{label}</span>
+              <span className="link-underline"></span>
+            </Link>
+          );
+        })}
       </div>
 
-      {isLoggedIn ? (
-        <button onClick={handleLogout} className="cta">
-          Logout
-        </button>
-      ) : (
-        <Link to="/login" className="cta">
-          Login / Register
-        </Link>
-      )}
+      {/* ── CTA Button ── */}
+      <button className="nav-cta">
+        <span>Get Started</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M1 8h14M9 2l6 6-6 6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
     </nav>
   );
 }

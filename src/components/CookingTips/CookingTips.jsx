@@ -20,18 +20,15 @@ export default function CookingTips() {
   const philosophies = [
     {
       number: "01",
-      title: "Intent over speed",
-      text: "Great food starts with patience. Slow down, taste, and adjust."
+      title: "Intent over speed"
     },
     {
       number: "02",
-      title: "Heat is emotion",
-      text: "Fire can comfort or destroy. Learn to control it, not fear it."
+      title: "Heat is emotion"
     },
     {
       number: "03",
-      title: "Simplicity wins",
-      text: "Few ingredients, treated right, always beat complexity."
+      title: "Simplicity wins"
     }
   ];
 
@@ -52,7 +49,6 @@ Cooking is more than just a task     <br />
             <div className="philosophy-item" key={p.number}>
               <span className="philo-number">{p.number}</span>
               <h3>{p.title}</h3>
-              <p>{p.text}</p>
             </div>
           ))}
         </div>

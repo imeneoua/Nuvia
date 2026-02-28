@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // components
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/navbar/Navbar";
-import CookingTips from "./components/CookingTips/CookingTips";
 import Footer from "./components/footer/Footer";
 import Planner from "./components/planner/Planner";
 import Recipes from "./components/recipes/Recipes";
@@ -27,9 +26,7 @@ function App() {
           element={
             <>
               <Hero />
-              <CookingTips />
               <Recipes />
-              <Planner />
               <Footer />
             </>
           }

@@ -1,100 +1,211 @@
+/* ============================================================
+   Navbar.css  —  Nuvia Culinary Experience
+   Reference: warm beige/dark-brown coffee-shop aesthetic
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=Jost:wght@300;400;500;600&display=swap');
+
+/* ─── Design Tokens ─── */
+:root {
+  --beige:          #f0ddd0;
+  --beige-light:    #f7ede3;
+  --brown-dark:     #1c0f08;
+  --brown-mid:      #2e1a0e;
+  --brown-accent:   #c8784a;
+  --brown-hover:    #a05c30;
+  --text-nav:       #e8d5c4;
+  --text-muted:     #b89880;
+  --border-subtle:  rgba(200, 120, 74, 0.18);
+  --shadow-nav:     0 8px 40px rgba(0, 0, 0, 0.45);
+  --radius-pill:    100px;
+  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base Reset (scoped) ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ─── Navbar Container ─── */
 .navbar {
   position: fixed;
-  top: 12px;
-  left: 8%;
-  right: 8%;
-  width: auto;
-  height: 84px;
-  padding: 18px 6%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  padding: 0 56px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1000;
-  transition: all 0.4s ease;
-  background: linear-gradient(
-    135deg,
-    rgba(245, 249, 229, 0.95),
-    rgba(248, 251, 234, 0.92)
-  );
-  border-radius: 999px;
-  box-shadow: 0 18px 40px rgba(71, 91, 53, 0.14);
-  border: 1px solid rgba(225, 145, 132, 0.25);
-  backdrop-filter: blur(10px);
+  /* Starts fully transparent over the dark hero */
+  background: transparent;
+  transition:
+    background var(--transition),
+    backdrop-filter var(--transition),
+    box-shadow var(--transition);
 }
 
+/* Scrolled state — frosted dark glass */
 .navbar.scrolled {
-  background: rgba(245, 249, 229, 0.92);
-  box-shadow: 0 12px 30px rgba(71, 91, 53, 0.12);
-  border-color: rgba(225, 145, 132, 0.3);
+  background: rgba(28, 15, 8, 0.82);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: var(--shadow-nav);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-/* LOGO */
+/* ─── Logo ─── */
+.logo-link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 2px;
+  cursor: pointer;
+}
+
 .logo {
-  font-family: "Playfair Display", serif;
-  font-size: 26px;
-  font-weight: 500;
-  color: var(--color-text);
-  letter-spacing: 1px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-nav);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin: 0;
 }
 
-/* LINKS */
+/* Accent first letter */
+.logo-n {
+  color: var(--brown-accent);
+  font-style: italic;
+}
+
+.logo-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ─── Nav Links ─── */
 .links {
   display: flex;
-  gap: 32px;
+  align-items: center;
+  gap: 38px;
 }
 
-.links a {
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  color: var(--color-text-muted);
-  font-weight: 500;
+.nav-link {
   position: relative;
-  transition: color 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
 }
 
-.links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: var(--color-accent-strong);
-  transition: width 0.3s ease;
+.link-text {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  transition: color var(--transition);
 }
 
-.links a:hover::after,
-.links a.active::after {
+.link-underline {
+  display: block;
+  height: 1.5px;
+  width: 0;
+  background: var(--brown-accent);
+  border-radius: 2px;
+  transition: width var(--transition);
+}
+
+/* Hover & active states */
+.nav-link:hover .link-text,
+.nav-link.active .link-text {
+  color: var(--text-nav);
+}
+
+.nav-link:hover .link-underline,
+.nav-link.active .link-underline {
   width: 100%;
 }
 
-/* CTA */
-.cta {
-  padding: 10px 24px;
-  border-radius: 999px;
-  border: 1px solid rgba(225, 145, 132, 0.55);
-  color: var(--color-bg);
-  font-size: 13px;
-  letter-spacing: 0.4px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.35s ease;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+/* Active dot indicator */
+.nav-link.active .link-text::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--brown-accent);
 }
 
-.cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(225, 145, 132, 0.35);
-}
-
-.link-btn {
-  background: none;
+/* ─── CTA Button ─── */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 26px;
+  background: var(--brown-accent);
+  color: var(--beige-light);
   border: none;
-  font: inherit;
-  color: var(--color-text-muted);
+  border-radius: var(--radius-pill);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
   cursor: pointer;
-  position: relative;
+  transition:
+    background var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+  white-space: nowrap;
 }
 
+.nav-cta:hover {
+  background: var(--brown-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(200, 120, 74, 0.35);
+}
 
+.nav-cta:active {
+  transform: translateY(0);
+}
+
+.nav-cta svg {
+  transition: transform var(--transition);
+}
+
+.nav-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 28px;
+  }
+
+  .links {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 680px) {
+  .links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+}

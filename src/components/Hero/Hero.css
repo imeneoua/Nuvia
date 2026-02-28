@@ -1,354 +1,544 @@
-/* ===================================
-   HERO SECTION - Nuvia Experience
-   =================================== */
+/* ============================================================
+   Hero.css  —  Nuvia Culinary Experience
+   Reference: dark wave hero with warm beige categories section
+   ============================================================ */
 
+/* ─── Hero Wrapper ─── */
 .hero-wrapper {
-  min-height: 100vh;
-  padding: 180px 8% 120px;
-  background: var(--color-bg);
-  display: flex;
-  align-items: flex-start;
   position: relative;
+  width: 100%;
+  /* bg matches the wave pseudo so no colour bleed shows through */
+  background: var(--beige-light, #f7ede3);
+  /* clip any overflow from the oversized pseudo-element */
   overflow: hidden;
 }
 
-.hero-wrapper::before {
-  content: "";
+/* ============================================================
+   DARK WAVE ZONE  (dark brown background with wavy edges)
+   ============================================================ */
+.hero-main {
+  position: relative;
+  background: var(--brown-dark, #1c0f08);
+  padding-top: 120px;
+  /* Extra bottom padding so content never sits behind the wave */
+  padding-bottom: 160px;
+  /* No clip-path here — the wave is formed purely by ::after */
+}
+
+/* Wavy bottom wave — beige shape that sits ON TOP of the dark zone.
+   Key fixes:
+   · Wider than 100% so rounded ends never show as a thin arc line
+   · bottom value pulls it up enough to cover the dark edge fully
+   · outline trick prevents subpixel antialiasing fringe            */
+.hero-main::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: -8%;
+  right: -8%;
+  height: 180px;
+  background: var(--beige-light, #f7ede3);
+  /* elliptical top arc — wider radius = gentler, more wave-like curve */
+  border-radius: 50% 50% 0 0 / 80px 80px 0 0;
+  /* outline eliminates the 1-px antialiasing fringe */
+  outline: 2px solid var(--beige-light, #f7ede3);
+  z-index: 3;
+}
+
+/* ─── Ambient Layers ─── */
+.hero-ambient {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(245, 249, 229, 0.08) 0%, rgba(245, 249, 229, 0.22) 100%),
-    url("/public/Gemini_pic.png") center/cover no-repeat;
-  transform: scale(1);
+  pointer-events: none;
   z-index: 0;
 }
 
+/* Warm glow top-right — mimics the image halo in reference */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ambient-glow-1 {
+  top: -120px;
+  right: -80px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle at center,
+    rgba(200, 120, 74, 0.18) 0%,
+    rgba(200, 120, 74, 0.06) 45%,
+    transparent 70%
+  );
+}
+
+.ambient-glow-2 {
+  bottom: 60px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at center,
+    rgba(140, 70, 20, 0.12) 0%,
+    transparent 65%
+  );
+}
+
+/* Grain / noise texture overlay */
+.ambient-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ─── Inner Layout ─── */
 .hero-content {
   position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 620px;
-  margin: 0;
-  text-align: left;
-  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 60px;
 }
 
-/* ===================================
-   EYEBROW TEXT
-   =================================== */
-
-.hero-text .eyebrow {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: rgba(71, 91, 53, 0.7);
-  font-weight: 700;
-  text-transform: uppercase;
-  display: inline-block;
-  margin-bottom: 4px;
-  animation: fadeIn 1s ease-out 0.3s backwards;
-}
-
-/* ===================================
-   MAIN HEADING
-   =================================== */
-
-.hero-text h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 58px;
-  font-weight: 600;
-  line-height: 1.12;
-  color: var(--color-text);
-  margin: 18px 0 14px;
-  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
-}
-
-/* "with intent" styling - coral/pink/terracotta accent */
-.hero-text .accent {
-  color: var(--color-accent);
-  font-style: italic;
-  font-weight: 400;
-  position: relative;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-/* "beautifully" styling - darker green accent */
-.hero-text .accent-green {
-  color: #475b35;
-  font-weight: 600;
-  font-style: normal;
-  position: relative;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-/* Subtle hover effect on accents */
-.hero-text h1:hover .accent {
-  color: #c77f6a;
-  transform: translateY(-2px);
-}
-
-.hero-text h1:hover .accent-green {
-  color: #5a6b3d;
-  transform: translateY(-2px);
-}
-
-/* ===================================
-   SUBTITLE TEXT
-   =================================== */
-
-.subtitle {
-  max-width: 420px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: rgba(71, 91, 53, 0.7);
-  margin-bottom: 36px;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: 500;
-  animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
-}
-
+/* ============================================================
+   LEFT — Text Block
+   ============================================================ */
 .the-text {
-  transform: translateY(-10px);
+  flex: 1;
+  max-width: 520px;
 }
 
-/* ===================================
-   DECORATIVE SPARKLES
-   =================================== */
+/* Eyebrow label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--brown-accent, #c8784a);
+  margin-bottom: 22px;
+}
 
+.eyebrow-accent {
+  font-size: 0.6rem;
+  opacity: 0.7;
+}
+
+/* Main headline */
+.the-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.06;
+  color: var(--beige-light, #f7ede3);
+  margin-bottom: 22px;
+  letter-spacing: -1px;
+}
+
+/* Coloured word accents */
+.the-text h1 .accent {
+  color: var(--brown-accent, #c8784a);
+  font-style: italic;
+}
+
+.the-text h1 .accent-green {
+  /* warm golden-green, distinct from accent */
+  color: #c8a84a;
+  font-style: italic;
+}
+
+/* Subtitle paragraph */
+.subtitle {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-muted, #b89880);
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+/* ─── Philosophy Grid ─── */
+.hero-philosophy-grid {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 44px;
+}
+
+.hero-philosophy-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(200, 120, 74, 0.14);
+  border-radius: 14px;
+  padding: 16px 20px;
+  flex: 1;
+  min-width: 120px;
+  transition: border-color 0.3s, background 0.3s;
+  animation-delay: calc(var(--card-index, 0) * 0.12s);
+}
+
+.hero-philosophy-card:hover {
+  border-color: rgba(200, 120, 74, 0.38);
+  background: rgba(200, 120, 74, 0.06);
+}
+
+.philosophy-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.hero-philosophy-number {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--brown-accent, #c8784a);
+}
+
+.philosophy-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(200, 120, 74, 0.2);
+  border-radius: 1px;
+}
+
+.hero-philosophy-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--beige-light, #f7ede3);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.philosophy-description {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted, #b89880);
+  line-height: 1.5;
+}
+
+/* ============================================================
+   RIGHT — Image Gallery
+   ============================================================ */
+.hero-visual {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+}
+
+.visual-gallery {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Image Stack ─── */
+.image-stack {
+  position: relative;
+  width: 100%;
+  height: 480px;
+}
+
+/* Base image layer style */
+.image-layer {
+  position: absolute;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+  transition:
+    opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    z-index 0s 0.35s;
+}
+
+/* Layer 1 — large card, slight left lean */
+.image-layer-1 {
+  top: 0;
+  left: 0;
+  width: 66%;
+  height: 72%;
+  transform: rotate(-2deg) translateZ(0);
+  z-index: 2;
+  opacity: 0.55;
+}
+
+/* Layer 2 — medium card, top-right */
+.image-layer-2 {
+  top: 5%;
+  right: 0;
+  width: 50%;
+  height: 55%;
+  transform: rotate(2.5deg) translateZ(0);
+  z-index: 1;
+  opacity: 0.55;
+}
+
+/* Layer 3 — card, bottom center */
+.image-layer-3 {
+  bottom: 0;
+  left: 18%;
+  width: 60%;
+  height: 46%;
+  transform: rotate(-0.8deg) translateZ(0);
+  z-index: 1;
+  opacity: 0.55;
+}
+
+/* Active / front card */
+.image-layer.active {
+  z-index: 4 !important;
+  opacity: 1;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.65), 0 0 0 2px rgba(200, 120, 74, 0.5);
+  transition-delay: 0s;
+}
+
+/* Image fill */
+.visual-image {
+  width: 100%;
+  height: 100%;
+}
+
+.visual-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Floating Accent Shapes ─── */
+.visual-accent {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.visual-accent-1 {
+  width: 140px;
+  height: 140px;
+  top: -30px;
+  right: -20px;
+  background: rgba(200, 120, 74, 0.08);
+  border: 1px solid rgba(200, 120, 74, 0.15);
+  animation: pulse-ring 4s ease-in-out infinite;
+}
+
+.visual-accent-2 {
+  width: 80px;
+  height: 80px;
+  bottom: 10px;
+  left: 0;
+  background: rgba(200, 120, 74, 0.06);
+  border: 1px solid rgba(200, 120, 74, 0.1);
+  animation: pulse-ring 4s ease-in-out infinite 1.5s;
+}
+
+/* ─── Gallery Dot Navigation ─── */
+.gallery-dots {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dot-inner {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(184, 152, 128, 0.4);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dot.active .dot-inner {
+  width: 22px;
+  border-radius: 3px;
+  background: var(--brown-accent, #c8784a);
+}
+
+.dot:hover .dot-inner {
+  background: rgba(200, 120, 74, 0.6);
+}
+
+/* ============================================================
+   SPARKLES
+   ============================================================ */
 .hero-sparkles {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
+  z-index: 5;
 }
 
 .sparkle {
   position: absolute;
-  font-size: 24px;
-  color: rgba(212, 149, 140, 0.3);
-  animation: sparkleFloat 8s infinite ease-in-out;
+  color: var(--brown-accent, #c8784a);
+  font-size: 0.9rem;
   opacity: 0;
+  animation: twinkle 3.5s ease-in-out infinite;
 }
 
-.sparkle-1 {
-  top: 20%;
-  right: 25%;
-  animation-delay: 1s;
-  animation-duration: 10s;
+.sparkle-1 { top: 22%;  left: 46%; animation-delay: 0s;    font-size: 1rem;  }
+.sparkle-2 { top: 52%;  left: 54%; animation-delay: 0.9s;  font-size: 0.7rem; }
+.sparkle-3 { top: 36%;  left: 42%; animation-delay: 1.7s;  font-size: 0.6rem; }
+.sparkle-4 { top: 64%;  left: 38%; animation-delay: 2.4s;  font-size: 0.8rem; }
+.sparkle-5 { top: 18%;  left: 62%; animation-delay: 1.2s;  font-size: 0.65rem; }
+
+/* ============================================================
+   SCROLL INDICATOR
+   ============================================================ */
+.scroll-indicator {
+  position: absolute;
+  bottom: 90px;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 6;
 }
 
-.sparkle-2 {
-  top: 65%;
-  right: 15%;
-  animation-delay: 3s;
-  animation-duration: 12s;
-  font-size: 18px;
+.scroll-line {
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(to bottom, transparent, var(--brown-accent, #c8784a));
+  animation: scroll-drop 2s ease-in-out infinite;
 }
 
-.sparkle-3 {
-  top: 45%;
-  right: 35%;
-  animation-delay: 5s;
-  animation-duration: 9s;
-  font-size: 20px;
+.scroll-text {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--text-muted, #b89880);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
 
-/* ===================================
-   ANIMATIONS
-   =================================== */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* ============================================================
+   FADE-IN ANIMATION (IntersectionObserver hook)
+   ============================================================ */
+.fade-in-element {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fade-in-element.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes sparkleFloat {
-  0%, 100% {
-    opacity: 0;
-    transform: translate(0, 0) scale(0.8) rotate(0deg);
-  }
-  10% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.6;
-    transform: translate(15px, -20px) scale(1.1) rotate(180deg);
-  }
-  90% {
-    opacity: 0.3;
-  }
+/* Stagger children if needed */
+.fade-in-element:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-element:nth-child(2) { transition-delay: 0.25s; }
+.fade-in-element:nth-child(3) { transition-delay: 0.4s; }
+.fade-in-element:nth-child(4) { transition-delay: 0.55s; }
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes twinkle {
+  0%,  100% { opacity: 0.15; transform: scale(0.8); }
+  50%        { opacity: 0.7;  transform: scale(1.3); }
 }
 
-/* ===================================
-   RESPONSIVE DESIGN
-   =================================== */
-
-@media (max-width: 900px) {
-  .hero-wrapper {
-    padding: 140px 6% 100px;
-  }
-
-  .hero-text h1 {
-    font-size: 42px;
-  }
-
-  .hero-text .eyebrow {
-    font-size: 11px;
-  }
-
-  .subtitle {
-    font-size: 13px;
-    max-width: 380px;
-  }
-
-  .sparkle {
-    font-size: 18px;
-  }
+@keyframes pulse-ring {
+  0%,  100% { transform: scale(1);    opacity: 1; }
+  50%        { transform: scale(1.08); opacity: 0.6; }
 }
 
-@media (max-width: 768px) {
-  .hero-wrapper {
-    padding: 120px 5% 80px;
-    min-height: 85vh;
-  }
+@keyframes scroll-drop {
+  0%        { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40%       { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  70%       { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100%      { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
   .hero-content {
-    max-width: 100%;
+    padding: 0 36px;
+    gap: 36px;
   }
+}
 
-  .hero-text h1 {
-    font-size: 36px;
-    margin: 14px 0 12px;
-  }
-
-  .hero-text .eyebrow {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-  }
-
-  .subtitle {
-    font-size: 13px;
-    line-height: 1.65;
-    max-width: 340px;
-    margin-bottom: 28px;
+@media (max-width: 820px) {
+  .hero-content {
+    flex-direction: column;
+    padding: 0 28px;
+    text-align: center;
   }
 
   .the-text {
-    transform: translateY(-8px);
+    max-width: 100%;
   }
 
-  .hero-sparkles {
+  .subtitle {
+    margin: 0 auto 32px;
+  }
+
+  .hero-visual {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .image-stack {
+    height: 360px;
+  }
+
+  .hero-philosophy-grid {
+    justify-content: center;
+  }
+
+  .scroll-indicator {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-wrapper {
-    padding: 100px 5% 60px;
-    min-height: 75vh;
+  .hero-main {
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
-  .hero-text h1 {
-    font-size: 32px;
-    line-height: 1.15;
+  .image-stack {
+    height: 280px;
   }
 
-  .hero-text .eyebrow {
-    font-size: 9px;
-    letter-spacing: 1.2px;
-  }
-
-  .subtitle {
-    font-size: 12px;
-    line-height: 1.6;
-    max-width: 300px;
-  }
-
-  .the-text {
-    transform: translateY(-5px);
-  }
-}
-
-/* ===================================
-   ACCESSIBILITY
-   =================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-content,
-  .hero-text .eyebrow,
-  .hero-text h1,
-  .subtitle,
-  .sparkle {
-    animation: none;
-  }
-
-  .hero-text .accent,
-  .hero-text .accent-green {
-    transition: none;
-  }
-
-  .hero-wrapper::before {
-    filter: none;
-  }
-}
-
-/* ===================================
-   HIGH CONTRAST MODE
-   =================================== */
-
-@media (prefers-contrast: high) {
-  .hero-text .eyebrow {
-    color: rgba(71, 91, 53, 0.9);
-  }
-
-  .subtitle {
-    color: rgba(71, 91, 53, 0.9);
-  }
-
-  .sparkle {
-    display: none;
-  }
-}
-
-/* ===================================
-   PRINT STYLES
-   =================================== */
-
-@media print {
-  .hero-wrapper {
-    min-height: auto;
-    padding: 40px 20px;
-  }
-
-  .hero-wrapper::before {
-    display: none;
-  }
-
-  .hero-sparkles {
-    display: none;
-  }
-
-  .hero-text h1,
-  .subtitle,
-  .hero-text .eyebrow {
-    color: black;
+  .hero-philosophy-card {
+    min-width: 100%;
   }
 }
