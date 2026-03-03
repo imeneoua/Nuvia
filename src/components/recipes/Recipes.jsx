@@ -233,7 +233,7 @@ export default function Recipes() {
       <div className="recipes-head">
         <div className="head-ornament"></div>
         <span className="head-label">CULINARY ARTISTRY</span>
-        <h2 className="head-title">Recipes as Rituals</h2>
+        <h2 className="head-title">Recipes </h2>
         <p className="head-subtitle">A curated collection of timeless moments</p>
       </div>
 
@@ -271,7 +271,7 @@ export default function Recipes() {
       <div className="recipes-head recipes-head--alt">
         <div className="head-ornament"></div>
         <span className="head-label">BEVERAGE COLLECTION</span>
-        <h2 className="head-title">Liquid Poetry</h2>
+        <h2 className="head-title">Liquid </h2>
         <p className="head-subtitle">Crafted moments in every sip</p>
       </div>
 

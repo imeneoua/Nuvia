@@ -26,13 +26,13 @@
 .ex-glow-1 {
   top: -80px; right: -80px;
   width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(200,120,74,.16) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 102, 31,.16) 0%, transparent 70%);
 }
 
 .ex-glow-2 {
   bottom: 5%; left: -100px;
   width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(140,70,20,.1) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(120, 61, 25,.1) 0%, transparent 65%);
 }
 
 .ex-grain {
@@ -138,8 +138,8 @@
 .explore-search input {
   width: 100%;
   padding: 14px 44px 14px 48px;
-  background: rgba(255,255,255,.07);
-  border: 1.5px solid rgba(200,120,74,.22);
+  background: rgba(254, 250, 224,.07);
+  border: 1.5px solid rgba(196, 102, 31,.22);
   border-radius: 100px;
   color: var(--beige-light, #f7ede3);
   font-family: 'Jost', 'DM Sans', sans-serif;
@@ -149,11 +149,11 @@
   backdrop-filter: blur(8px);
 }
 
-.explore-search input::placeholder { color: rgba(184,152,128,.6); }
+.explore-search input::placeholder { color: rgba(169, 179, 136,.6); }
 
 .explore-search input:focus {
   border-color: var(--brown-accent, #c8784a);
-  background: rgba(255,255,255,.1);
+  background: rgba(254, 250, 224,.1);
 }
 
 .search-clear {
@@ -232,16 +232,16 @@
 .ex-card {
   border-radius: 20px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 6px 24px rgba(28,15,8,.08), 0 2px 8px rgba(28,15,8,.04);
-  border: 1px solid rgba(200,120,74,.08);
+  background: var(--cornsilk);
+  box-shadow: 0 6px 24px rgba(95, 111, 82,.08), 0 2px 8px rgba(95, 111, 82,.04);
+  border: 1px solid rgba(196, 102, 31,.08);
   transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
   cursor: pointer;
 }
 
 .ex-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(200,120,74,.18), 0 4px 12px rgba(28,15,8,.08);
+  box-shadow: 0 20px 50px rgba(196, 102, 31,.18), 0 4px 12px rgba(95, 111, 82,.08);
 }
 
 .ex-card-img {
@@ -263,7 +263,7 @@
 .ex-card-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(28,15,8,.5) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(95, 111, 82,.5) 0%, transparent 55%);
 }
 
 .ex-card-body {
@@ -313,12 +313,12 @@
   line-height: 1.6;
 }
 
-.explore-error-text { color: #c0392b !important; }
+.explore-error-text { color: #783D19 !important; }
 
 /* Loading spinner */
 .explore-spinner {
   width: 36px; height: 36px;
-  border: 3px solid rgba(200,120,74,.2);
+  border: 3px solid rgba(196, 102, 31,.2);
   border-top-color: var(--brown-accent, #c8784a);
   border-radius: 50%;
   animation: spin .8s linear infinite;

@@ -66,7 +66,7 @@
 .philosophy-item {
   padding: 26px 24px 28px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(254, 250, 224, 0.6);
   border: 1px solid rgba(183, 155, 120, 0.22);
   box-shadow: 0 14px 36px rgba(98, 6, 7, 0.08);
   text-align: left;
@@ -179,5 +179,6 @@
     font-size: 36px;
   }
 }
+
 
 

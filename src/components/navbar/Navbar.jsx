@@ -58,8 +58,8 @@ export default function Navbar() {
       </div>
 
       {/* ── CTA Button ── */}
-      <button className="nav-cta">
-        <span>Get Started</span>
+      <Link to="/planner" className="nav-cta">
+        <span>Planner</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path
             d="M1 8h14M9 2l6 6-6 6"
@@ -69,7 +69,7 @@ export default function Navbar() {
             strokeLinejoin="round"
           />
         </svg>
-      </button>
+      </Link>
 
     </nav>
   );

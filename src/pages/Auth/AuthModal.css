@@ -9,7 +9,7 @@
 
 .auth-card {
   width: 420px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(254, 250, 224, 0.7);
   backdrop-filter: blur(12px);
   border-radius: 32px;
   padding: 56px 50px 50px;
@@ -92,5 +92,6 @@
     padding: 46px 30px;
   }
 }
+
 
 

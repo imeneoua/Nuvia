@@ -31,7 +31,7 @@
   height: 560px;
   top: -80px;
   left: -160px;
-  background: radial-gradient(circle, rgba(200, 120, 74, 0.09) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 102, 31, 0.09) 0%, transparent 70%);
 }
 
 .atm-orb-2 {
@@ -39,7 +39,7 @@
   height: 420px;
   top: 40%;
   right: -100px;
-  background: radial-gradient(circle, rgba(200, 120, 74, 0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 102, 31, 0.07) 0%, transparent 70%);
 }
 
 .atm-orb-3 {
@@ -47,7 +47,7 @@
   height: 300px;
   bottom: 5%;
   left: 35%;
-  background: radial-gradient(circle, rgba(140, 70, 20, 0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(120, 61, 25, 0.06) 0%, transparent 70%);
 }
 
 /* ============================================================
@@ -120,7 +120,7 @@
   transform: translateX(-50%);
   width: 340px;
   height: 160px;
-  background: radial-gradient(ellipse, rgba(200, 120, 74, 0.13) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(196, 102, 31, 0.13) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -192,15 +192,15 @@
   border-radius: 22px;
   overflow: hidden;
   box-shadow:
-    0 24px 60px rgba(28, 15, 8, 0.22),
-    0 4px 16px rgba(28, 15, 8, 0.12);
+    0 24px 60px rgba(95, 111, 82, 0.22),
+    0 4px 16px rgba(95, 111, 82, 0.12);
   transition: box-shadow 0.4s;
 }
 
 .habit-card.is-active .habit-front {
   box-shadow:
-    0 36px 80px rgba(200, 120, 74, 0.22),
-    0 8px 24px rgba(28, 15, 8, 0.18);
+    0 36px 80px rgba(196, 102, 31, 0.22),
+    0 8px 24px rgba(95, 111, 82, 0.18);
 }
 
 /* Sheen sweep on hover */
@@ -211,7 +211,7 @@
   background: linear-gradient(
     105deg,
     transparent 40%,
-    rgba(255, 255, 255, 0.07) 50%,
+    rgba(254, 250, 224, 0.07) 50%,
     transparent 60%
   );
   background-size: 200% 100%;
@@ -255,8 +255,8 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(28, 15, 8, 0.90) 0%,
-    rgba(28, 15, 8, 0.55) 45%,
+    rgba(95, 111, 82, 0.90) 0%,
+    rgba(95, 111, 82, 0.55) 45%,
     transparent 80%
   );
   border-radius: 22px;
@@ -320,12 +320,12 @@
 }
 
 .habit-save:hover {
-  background: rgba(200, 120, 74, 0.2);
-  border-color: rgba(200, 120, 74, 0.5);
+  background: rgba(196, 102, 31, 0.2);
+  border-color: rgba(196, 102, 31, 0.5);
 }
 
 .habit-save.saved {
-  background: rgba(200, 120, 74, 0.25);
+  background: rgba(196, 102, 31, 0.25);
   border-color: var(--brown-accent, #c8784a);
   color: var(--brown-accent, #c8784a);
 }
@@ -347,10 +347,10 @@
   border-radius: 22px;
   overflow: hidden;
   background: var(--brown-dark, #1c0f08);
-  border: 1px solid rgba(200, 120, 74, 0.18);
+  border: 1px solid rgba(196, 102, 31, 0.18);
   box-shadow:
-    0 36px 80px rgba(28, 15, 8, 0.40),
-    inset 0 1px 0 rgba(200, 120, 74, 0.08);
+    0 36px 80px rgba(95, 111, 82, 0.40),
+    inset 0 1px 0 rgba(196, 102, 31, 0.08);
 }
 
 .habit-back-content {
@@ -387,7 +387,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  border: 1px solid rgba(200, 120, 74, 0.3);
+  border: 1px solid rgba(196, 102, 31, 0.3);
   background: transparent;
   color: var(--text-muted, #b89880);
   font-size: 0.7rem;
@@ -399,7 +399,7 @@
 }
 
 .flip-back-btn:hover {
-  background: rgba(200, 120, 74, 0.15);
+  background: rgba(196, 102, 31, 0.15);
   color: var(--brown-accent, #c8784a);
 }
 
@@ -467,7 +467,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1px solid rgba(200, 120, 74, 0.35);
+  border: 1px solid rgba(196, 102, 31, 0.35);
   font-size: 0.6rem;
   font-weight: 600;
   color: var(--brown-accent, #c8784a);
@@ -502,7 +502,7 @@
   height: 6px;
   border-radius: 50%;
   border: none;
-  background: rgba(28, 15, 8, 0.18);
+  background: rgba(95, 111, 82, 0.18);
   cursor: pointer;
   padding: 0;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -515,7 +515,7 @@
 }
 
 .carousel-dot:hover:not(.active) {
-  background: rgba(200, 120, 74, 0.45);
+  background: rgba(196, 102, 31, 0.45);
 }
 
 /* ============================================================
@@ -536,11 +536,11 @@
   flex: 1;
   max-width: 140px;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(200, 120, 74, 0.3));
+  background: linear-gradient(to right, transparent, rgba(196, 102, 31, 0.3));
 }
 
 .planner-cta .cta-ornament:last-child {
-  background: linear-gradient(to left, transparent, rgba(200, 120, 74, 0.3));
+  background: linear-gradient(to left, transparent, rgba(196, 102, 31, 0.3));
 }
 
 /* Button */
@@ -568,7 +568,7 @@
 .planner-btn:hover {
   background: var(--brown-accent, #c8784a);
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(200, 120, 74, 0.32);
+  box-shadow: 0 16px 40px rgba(196, 102, 31, 0.32);
 }
 
 .planner-btn:active {
@@ -582,7 +582,7 @@
   background: linear-gradient(
     105deg,
     transparent 35%,
-    rgba(255, 255, 255, 0.08) 50%,
+    rgba(254, 250, 224, 0.08) 50%,
     transparent 65%
   );
   background-size: 200% 100%;

@@ -8,7 +8,7 @@
   position: relative;
   width: 100%;
   /* bg matches the wave pseudo so no colour bleed shows through */
-  background: var(--beige-light, #f7ede3);
+  background: var(--brown-dark, #1c0f08);
   /* clip any overflow from the oversized pseudo-element */
   overflow: hidden;
 }
