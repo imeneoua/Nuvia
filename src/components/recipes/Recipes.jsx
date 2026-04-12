@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+﻿﻿import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Recipes.css";
 
@@ -151,14 +151,6 @@ export default function Recipes() {
                 <h3>{item.title}</h3>
                 <div className="card-divider"></div>
               </div>
-
-              <button
-                className={`habit-save${isSaved ? " saved" : ""}`}
-                onClick={(e) => { e.stopPropagation(); onSave(item); }}
-              >
-                <span className="save-icon">{isSaved ? "♥" : "♡"}</span>
-                <span className="save-text">{isSaved ? "Saved" : "Save"}</span>
-              </button>
             </div>
           </div>
 

@@ -1,11 +1,15 @@
 /* ============================================================
    Explore.css  —  Nuvia Culinary Experience
+   UPDATED: Matching Planner warm palette
    ============================================================ */
 
 /* ─── Page Shell ─── */
 .explore-page {
   position: relative;
-  background: var(--beige-light, #f7ede3);
+  background:
+    radial-gradient(72% 95% at 8% 4%, rgba(188, 134, 83, 0.16) 0%, transparent 56%),
+    radial-gradient(58% 76% at 92% 10%, rgba(100, 42, 22, 0.24) 0%, transparent 52%),
+    linear-gradient(180deg, #b59275 0%, #a8856a 44%, #b59275 100%);
   min-height: 100vh;
   overflow: hidden;
 }
@@ -26,13 +30,13 @@
 .ex-glow-1 {
   top: -80px; right: -80px;
   width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(196, 102, 31,.16) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(196, 102, 31,.18) 0%, transparent 70%);
 }
 
 .ex-glow-2 {
   bottom: 5%; left: -100px;
   width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(120, 61, 25,.1) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(188, 134, 83,.12) 0%, transparent 65%);
 }
 
 .ex-grain {
@@ -43,12 +47,12 @@
 }
 
 /* ============================================================
-   HERO BAND  (dark wave — same system as Hero / Planner / Profile)
+   HERO BAND  (dark wave — same system as Planner)
    ============================================================ */
 .explore-hero {
   position: relative;
   z-index: 2;
-  background: var(--brown-dark, #1c0f08);
+  background: linear-gradient(180deg, #b59275 0%, #a8856a 48%, #b59275 100%);
   clip-path: ellipse(100% 96% at 50% 4%);
   padding: 130px 60px 170px;
   overflow: hidden;
@@ -60,7 +64,7 @@
   position: absolute;
   bottom: -70px; left: -5%; right: -5%;
   height: 160px;
-  background: var(--beige-light, #f7ede3);
+  background: linear-gradient(180deg, #9d7a60 0%, #b59275 100%);
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   z-index: 3;
 }
@@ -87,7 +91,7 @@
   font-weight: 500;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--brown-accent, #c8784a);
+  color: rgba(100, 42, 22, 0.78);
   margin-bottom: 20px;
 }
 
@@ -101,7 +105,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.8rem, 6vw, 5rem);
   font-weight: 900;
-  color: var(--beige-light, #f7ede3);
+  color: #642a16;
   line-height: 1.05;
   letter-spacing: -1px;
   margin-bottom: 18px;
@@ -113,7 +117,7 @@
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.75;
-  color: var(--text-muted, #b89880);
+  color: rgba(100, 42, 22, 0.62);
   max-width: 460px;
   margin-bottom: 36px;
 }
@@ -130,7 +134,7 @@
 .search-icon {
   position: absolute;
   left: 18px;
-  color: var(--text-muted, #b89880);
+  color: rgba(100, 42, 22, 0.62);
   pointer-events: none;
   flex-shrink: 0;
 }
@@ -138,22 +142,25 @@
 .explore-search input {
   width: 100%;
   padding: 14px 44px 14px 48px;
-  background: rgba(254, 250, 224,.07);
-  border: 1.5px solid rgba(196, 102, 31,.22);
+  background: rgba(248, 238, 229, 0.18);
+  border: 1.5px solid rgba(100, 42, 22, 0.28);
   border-radius: 100px;
-  color: var(--beige-light, #f7ede3);
+  color: #642a16;
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.9rem;
   outline: none;
-  transition: border-color .3s, background .3s;
+  transition: border-color .3s, background .3s, box-shadow .3s;
   backdrop-filter: blur(8px);
 }
 
-.explore-search input::placeholder { color: rgba(169, 179, 136,.6); }
+.explore-search input::placeholder { 
+  color: rgba(100, 42, 22, 0.46); 
+}
 
 .explore-search input:focus {
-  border-color: var(--brown-accent, #c8784a);
-  background: rgba(254, 250, 224,.1);
+  border-color: #bc8653;
+  background: rgba(248, 238, 229, 0.28);
+  box-shadow: 0 0 0 4px rgba(188, 134, 83, 0.12);
 }
 
 .search-clear {
@@ -161,14 +168,16 @@
   right: 16px;
   background: transparent;
   border: none;
-  color: var(--text-muted, #b89880);
+  color: rgba(100, 42, 22, 0.6);
   font-size: 0.75rem;
   cursor: pointer;
   padding: 4px;
   transition: color .25s;
 }
 
-.search-clear:hover { color: var(--beige-light, #f7ede3); }
+.search-clear:hover { 
+  color: #642a16; 
+}
 
 /* ─── Sparkles ─── */
 .explore-sparkles {
@@ -180,7 +189,7 @@
 
 .ex-sparkle {
   position: absolute;
-  color: var(--brown-accent, #c8784a);
+  color: rgba(188, 134, 83, 0.72);
   opacity: 0;
   animation: twinkle 3.5s ease-in-out infinite;
 }
@@ -209,7 +218,7 @@
 .explore-count {
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.82rem;
-  color: var(--text-muted, #b89880);
+  color: rgba(100, 42, 22, 0.62);
   margin-bottom: 32px;
   letter-spacing: 0.3px;
 }
@@ -218,7 +227,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
   font-weight: 700;
-  color: var(--brown-accent, #c8784a);
+  color: #642a16;
 }
 
 /* ─── Recipe grid ─── */
@@ -232,16 +241,16 @@
 .ex-card {
   border-radius: 20px;
   overflow: hidden;
-  background: var(--cornsilk);
-  box-shadow: 0 6px 24px rgba(95, 111, 82,.08), 0 2px 8px rgba(95, 111, 82,.04);
-  border: 1px solid rgba(196, 102, 31,.08);
+  background: linear-gradient(180deg, rgba(248, 238, 229, 0.96) 0%, rgba(248, 238, 229, 0.9) 100%);
+  box-shadow: 0 16px 34px rgba(100, 42, 22, 0.12), 0 2px 10px rgba(100, 42, 22, 0.08);
+  border: 1px solid rgba(100, 42, 22, 0.14);
   transition: transform .35s cubic-bezier(.4,0,.2,1), box-shadow .35s;
   cursor: pointer;
 }
 
 .ex-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(196, 102, 31,.18), 0 4px 12px rgba(95, 111, 82,.08);
+  box-shadow: 0 24px 54px rgba(100, 42, 22, 0.18), 0 0 0 1px rgba(188, 134, 83, 0.18);
 }
 
 .ex-card-img {
@@ -258,12 +267,14 @@
   transition: transform .5s ease;
 }
 
-.ex-card:hover .ex-card-img img { transform: scale(1.06); }
+.ex-card:hover .ex-card-img img { 
+  transform: scale(1.06); 
+}
 
 .ex-card-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(95, 111, 82,.5) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(100, 42, 22, 0.56) 0%, transparent 55%);
 }
 
 .ex-card-body {
@@ -277,7 +288,7 @@
   font-weight: 500;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--brown-accent, #c8784a);
+  color: #bc8653;
   margin-bottom: 6px;
 }
 
@@ -285,7 +296,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--brown-dark, #1c0f08);
+  color: #642a16;
   line-height: 1.25;
   margin: 0;
 }
@@ -303,28 +314,34 @@
   text-align: center;
 }
 
-.explore-state-icon { font-size: 2.8rem; }
+.explore-state-icon { 
+  font-size: 2.8rem; 
+}
 
 .explore-state p {
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.95rem;
-  color: var(--text-muted, #b89880);
+  color: rgba(100, 42, 22, 0.62);
   max-width: 340px;
   line-height: 1.6;
 }
 
-.explore-error-text { color: #783D19 !important; }
+.explore-error-text { 
+  color: #642a16 !important; 
+}
 
 /* Loading spinner */
 .explore-spinner {
   width: 36px; height: 36px;
-  border: 3px solid rgba(196, 102, 31,.2);
-  border-top-color: var(--brown-accent, #c8784a);
+  border: 3px solid rgba(188, 134, 83, 0.2);
+  border-top-color: #bc8653;
   border-radius: 50%;
   animation: spin .8s linear infinite;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin { 
+  to { transform: rotate(360deg); } 
+}
 
 /* Login button (error state) */
 .ex-btn-primary {
@@ -332,21 +349,23 @@
   align-items: center;
   gap: 8px;
   padding: 11px 26px;
-  background: var(--brown-accent, #c8784a);
-  color: var(--beige-light, #f7ede3);
-  border: none;
+  background: rgba(181, 146, 117, 0.97);
+  color: #642a16;
+  border: 1px solid rgba(248, 238, 229, 0.3);
   border-radius: 100px;
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.88rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background .3s, transform .3s;
+  transition: background .3s, transform .3s, box-shadow .3s;
+  box-shadow: 0 8px 20px rgba(181, 146, 117, 0.3);
 }
 
 .ex-btn-primary:hover {
-  background: var(--brown-hover, #a05c30);
+  background: rgba(181, 146, 117, 1);
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(181, 146, 117, 0.4);
 }
 
 /* ============================================================

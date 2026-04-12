@@ -1,19 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./AuthModal.css";
 
 const API = "http://localhost:5000/api/auth";
 
 export default function Auth() {
   const navigate = useNavigate();
-  const [isRegister, setIsRegister] = useState(false);
+  const location = useLocation();
+  const isRegister = location.pathname === "/register";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e?.preventDefault();
     if (loading) return;
 
     // Simple validation
@@ -37,8 +39,8 @@ export default function Auth() {
         body: JSON.stringify(body),
       });
 
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
+      const data = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(data?.message || "Authentication failed.");
 
       // Save token and user data in localStorage
       localStorage.setItem("token", data.token);
@@ -47,7 +49,11 @@ export default function Auth() {
       // Navigate to the profile page (or any protected page)
       navigate("/profile");
     } catch (err) {
-      alert(err.message);
+      const message =
+        err.message === "Failed to fetch"
+          ? "Unable to reach the auth server. Make sure your backend is running on http://localhost:5000."
+          : err.message;
+      alert(message);
     } finally {
       setLoading(false);
     }
@@ -55,57 +61,84 @@ export default function Auth() {
 
   return (
     <main className="auth-page">
-      <div className="auth-card">
+      <div className="auth-page-glow auth-page-glow-1" aria-hidden="true"></div>
+      <div className="auth-page-glow auth-page-glow-2" aria-hidden="true"></div>
+      <div className="auth-page-grain" aria-hidden="true"></div>
+
+      <section className="auth-card">
+        <div className="auth-card-topline" aria-hidden="true">
+          <span className="topline-segment"></span>
+          <span className="topline-dot"></span>
+          <span className="topline-segment"></span>
+        </div>
+
         <span className="auth-eyebrow">
           {isRegister ? "CREATE YOUR KITCHEN" : "WELCOME BACK"}
         </span>
 
-        <h1>{isRegister ? "Join Yummi" : "Login"}</h1>
+        <h1>{isRegister ? "Join Nuvia" : "Login"}</h1>
 
         <p className="auth-sub">
           {isRegister
-            ? "Create your personal cooking space"
-            : "Enter your kitchen"}
+            ? "Create your personal cooking space and bring your weekly rituals to life."
+            : "Return to your kitchen space and continue planning with intention."}
         </p>
 
-        {isRegister && (
-          <input
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        )}
+        <form className="auth-form" onSubmit={handleSubmit}>
+          {isRegister && (
+            <label className="auth-field">
+              <span className="auth-label">Full Name</span>
+              <input
+                type="text"
+                autoComplete="name"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          )}
 
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <label className="auth-field">
+            <span className="auth-label">Email</span>
+            <input
+              type="email"
+              autoComplete="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <label className="auth-field">
+            <span className="auth-label">Password</span>
+            <input
+              type="password"
+              autoComplete={isRegister ? "new-password" : "current-password"}
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
 
-        <button onClick={handleSubmit} disabled={loading}>
-          {loading
-            ? "Please wait..."
-            : isRegister
-            ? "Create account"
-            : "Login"}
-        </button>
+          <button className="auth-submit" type="submit" disabled={loading}>
+            {loading
+              ? "Please wait..."
+              : isRegister
+              ? "Create Account"
+              : "Login"}
+          </button>
+        </form>
 
-        <span
+        <button
+          type="button"
           className="auth-switch"
-          onClick={() => setIsRegister(!isRegister)}
+          onClick={() => navigate(isRegister ? "/login" : "/register")}
         >
           {isRegister
             ? "Already have an account? Login"
             : "No account yet? Register"}
-        </span>
-      </div>
+        </button>
+      </section>
     </main>
   );
 }

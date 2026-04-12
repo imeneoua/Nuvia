@@ -191,23 +191,6 @@ export default function Planner() {
             </div>
 
           </div>
-
-          {/* Right: floating food cards */}
-          <div className="planner-hero-visual">
-            <div className="float-card float-card-1">
-              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400" alt="Salad" />
-              <div className="float-card-label">🥗 Fresh Start</div>
-            </div>
-            <div className="float-card float-card-2">
-              <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="Pizza" />
-              <div className="float-card-label">🍕 Comfort Food</div>
-            </div>
-            <div className="float-card float-card-3">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400" alt="Bowl" />
-              <div className="float-card-label">🥘 Nourishing</div>
-            </div>
-          </div>
-
         </div>
       </section>
 

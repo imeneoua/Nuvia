@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Explore.css";
 
 const API = "http://localhost:5000/api/saved-recipes";
@@ -101,7 +102,7 @@ export default function Explore() {
           <div className="explore-state">
             <span className="explore-state-icon">⚠️</span>
             <p className="explore-error-text">{error}</p>
-            <a href="/login" className="ex-btn-primary">Log In</a>
+            <Link to="/login" className="ex-btn-primary">Log In</Link>
           </div>
         )}
 

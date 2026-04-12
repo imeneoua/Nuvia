@@ -1,339 +1,74 @@
 /* ============================================================
    Recipes.css  —  Nuvia Culinary Experience
-   Flows directly from Hero.css wave bottom.
-   Palette, fonts and tokens inherited from Hero / Navbar CSS.
    ============================================================ */
 
 /* ─── Section Shell ─── */
 .recipes-section {
   position: relative;
-  background: var(--beige-light, #f7ede3);
-  padding-top: 80px; /* sits just below hero-main::after wave */
+  background: #b59275;
+  padding-top: 80px;
   padding-bottom: 120px;
   overflow: hidden;
 }
 
-/* ─── Ambient Orbs (mirror hero glow style) ─── */
-.recipes-atmosphere {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.atm-orb {
-  position: absolute;
-  border-radius: 50%;
-}
-
-.atm-orb-1 {
-  width: 560px;
-  height: 560px;
-  top: -80px;
-  left: -160px;
-  background: radial-gradient(circle, rgba(196, 102, 31, 0.09) 0%, transparent 70%);
-}
-
-.atm-orb-2 {
-  width: 420px;
-  height: 420px;
-  top: 40%;
-  right: -100px;
-  background: radial-gradient(circle, rgba(196, 102, 31, 0.07) 0%, transparent 70%);
-}
-
-.atm-orb-3 {
-  width: 300px;
-  height: 300px;
-  bottom: 5%;
-  left: 35%;
-  background: radial-gradient(circle, rgba(120, 61, 25, 0.06) 0%, transparent 70%);
-}
+/* ─── Ambient Orbs ─── */
+.recipes-atmosphere { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.atm-orb { position: absolute; border-radius: 50%; }
+.atm-orb-1 { width:560px; height:560px; top:-80px; left:-160px; background: radial-gradient(circle, rgba(196,102,31,0.09) 0%, transparent 70%); }
+.atm-orb-2 { width:420px; height:420px; top:40%; right:-100px; background: radial-gradient(circle, rgba(196,102,31,0.07) 0%, transparent 70%); }
+.atm-orb-3 { width:300px; height:300px; bottom:5%; left:35%; background: radial-gradient(circle, rgba(120,61,25,0.06) 0%, transparent 70%); }
 
 /* ============================================================
    SECTION HEADER
    ============================================================ */
-.recipes-head {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 0 20px 56px;
-}
-
-/* Decorative top line */
-.head-ornament {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, transparent, var(--brown-accent, #c8784a));
-  margin: 0 auto 20px;
-}
-
-.head-label {
-  display: inline-block;
-  font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--brown-accent, #c8784a);
-  margin-bottom: 14px;
-}
-
-.head-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4.5vw, 3.6rem);
-  font-weight: 900;
-  color: var(--brown-dark, #1c0f08);
-  line-height: 1.08;
-  letter-spacing: -0.5px;
-  margin-bottom: 12px;
-}
-
-.head-subtitle {
-  font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 300;
-  color: var(--text-muted, #b89880);
-  letter-spacing: 0.3px;
-}
-
-/* Alt header (Drinks section) — adds top breathing room */
-.recipes-head--alt {
-  padding-top: 80px;
-}
+.recipes-head { position:relative; z-index:2; text-align:center; padding:0 20px 56px; }
+.head-ornament { width:1px; height:48px; background:linear-gradient(to bottom,transparent,var(--brown-accent,#c8784a)); margin:0 auto 20px; }
+.head-label { display:inline-block; font-family:'Jost','DM Sans',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--brown-accent,#c8784a); margin-bottom:14px; }
+.head-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,3.6rem); font-weight:900; color:var(--brown-dark,#1c0f08); line-height:1.08; letter-spacing:-0.5px; margin-bottom:12px; }
+.head-subtitle { font-family:'Jost','DM Sans',sans-serif; font-size:0.95rem; font-weight:300; color:var(--text-muted,#b89880); letter-spacing:0.3px; }
+.recipes-head--alt { padding-top:80px; }
 
 /* ============================================================
    CAROUSEL SHELL
    ============================================================ */
-.habit-carousel {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding-bottom: 52px; /* space for dots */
-}
-
-/* Subtle centre glow under active card */
-.carousel-glow {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 340px;
-  height: 160px;
-  background: radial-gradient(ellipse, rgba(196, 102, 31, 0.13) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ─── Viewport (3D stage) ─── */
-.habit-viewport {
-  position: relative;
-  height: 440px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1400px;
-  overflow: visible;
-}
+.habit-carousel { position:relative; z-index:2; width:100%; padding-bottom:52px; }
+.carousel-glow { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); width:340px; height:160px; background:radial-gradient(ellipse,rgba(196,102,31,0.13) 0%,transparent 70%); pointer-events:none; z-index:0; }
+.habit-viewport { position:relative; height:440px; display:flex; align-items:center; justify-content:center; perspective:1400px; overflow:visible; }
 
 /* ============================================================
    CARD
    ============================================================ */
 .habit-card {
-  position: absolute;
-  width: 280px;
-  height: 380px;
-  cursor: pointer;
-  transform-style: preserve-3d;
-
-  /* Position is driven by --offset custom property */
+  position:absolute; width:280px; height:380px;
+  cursor:pointer; transform-style:preserve-3d;
   transform:
     translateX(calc(var(--offset) * 300px))
     translateZ(calc((1 - var(--abs)) * 60px - var(--abs) * 40px))
     rotateY(calc(var(--offset) * -8deg))
     scale(calc(1 - var(--abs) * 0.12));
-
-  opacity: calc(1 - var(--abs) * 0.38);
-  z-index: calc(10 - var(--abs, 0) * 3);
-
-  transition:
-    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity   0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity:calc(1 - var(--abs) * 0.38);
+  z-index:calc(10 - var(--abs, 0) * 3);
+  transition: transform 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.65s cubic-bezier(0.4,0,0.2,1);
 }
-
-/* Flip state */
-.habit-card.is-flipped .card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Active card slightly lifted */
-.habit-card.is-active {
-  z-index: 20;
-}
-
-/* ─── Card Inner (flip container) ─── */
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 22px;
-}
+.habit-card.is-flipped .card-inner { transform:rotateY(180deg); }
+.habit-card.is-active { z-index:20; }
+.card-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform 0.65s cubic-bezier(0.4,0,0.2,1); border-radius:22px; }
 
 /* ============================================================
    FRONT FACE
    ============================================================ */
-.habit-front {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow:
-    0 24px 60px rgba(95, 111, 82, 0.22),
-    0 4px 16px rgba(95, 111, 82, 0.12);
-  transition: box-shadow 0.4s;
-}
-
-.habit-card.is-active .habit-front {
-  box-shadow:
-    0 36px 80px rgba(196, 102, 31, 0.22),
-    0 8px 24px rgba(95, 111, 82, 0.18);
-}
-
-/* Sheen sweep on hover */
-.card-shimmer {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(254, 250, 224, 0.07) 50%,
-    transparent 60%
-  );
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0.6s ease;
-  pointer-events: none;
-  border-radius: 22px;
-}
-
-.habit-card:hover .card-shimmer {
-  background-position: -200% 0;
-}
-
-/* Recipe image */
-.habit-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.habit-card:hover .habit-front img {
-  transform: scale(1.05);
-}
-
-/* ─── Overlay ─── */
-.habit-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px;
-}
-
-/* Deep gradient from bottom */
-.card-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(95, 111, 82, 0.90) 0%,
-    rgba(95, 111, 82, 0.55) 45%,
-    transparent 80%
-  );
-  border-radius: 22px;
-}
-
-/* ─── Card Text ─── */
-.habit-text {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 12px;
-}
-
-.mood-badge {
-  display: inline-block;
-  font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--brown-accent, #c8784a);
-  margin-bottom: 6px;
-}
-
-.habit-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--beige-light, #f7ede3);
-  line-height: 1.25;
-  margin: 0 0 10px;
-}
-
-.card-divider {
-  width: 32px;
-  height: 1.5px;
-  background: var(--brown-accent, #c8784a);
-  border-radius: 1px;
-  opacity: 0.7;
-}
-
-/* ─── Save Button (front) ─── */
-.habit-save {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  background: rgba(247, 237, 227, 0.1);
-  border: 1px solid rgba(247, 237, 227, 0.22);
-  border-radius: 100px;
-  font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.75rem;
-  color: var(--beige-light, #f7ede3);
-  cursor: pointer;
-  transition:
-    background 0.3s,
-    border-color 0.3s,
-    color 0.3s;
-  backdrop-filter: blur(6px);
-}
-
-.habit-save:hover {
-  background: rgba(196, 102, 31, 0.2);
-  border-color: rgba(196, 102, 31, 0.5);
-}
-
-.habit-save.saved {
-  background: rgba(196, 102, 31, 0.25);
-  border-color: var(--brown-accent, #c8784a);
-  color: var(--brown-accent, #c8784a);
-}
-
-.save-icon {
-  font-size: 0.85rem;
-  line-height: 1;
-}
+.habit-front { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:22px; overflow:hidden; box-shadow:0 24px 60px rgba(100,42,22,0.24),0 4px 16px rgba(100,42,22,0.14); transition:box-shadow 0.4s; }
+.habit-card.is-active .habit-front { box-shadow:0 36px 80px rgba(100,42,22,0.28),0 8px 24px rgba(121,65,41,0.2); }
+.card-shimmer { position:absolute; inset:0; z-index:3; background:linear-gradient(105deg,transparent 40%,rgba(254,250,224,0.07) 50%,transparent 60%); background-size:200% 100%; background-position:200% 0; transition:background-position 0.6s ease; pointer-events:none; border-radius:22px; }
+.habit-card:hover .card-shimmer { background-position:-200% 0; }
+.habit-front img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s cubic-bezier(0.4,0,0.2,1); }
+.habit-card:hover .habit-front img { transform:scale(1.05); }
+.habit-overlay { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:flex-end; padding:20px; }
+.card-gradient { position:absolute; inset:0; background:linear-gradient(to top,rgba(100,42,22,0.90) 0%,rgba(121,65,41,0.56) 45%,transparent 80%); border-radius:22px; }
+.habit-text { position:relative; z-index:2; margin-bottom:4px; }
+.mood-badge { display:inline-block; font-family:'Jost','DM Sans',sans-serif; font-size:0.65rem; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; color:var(--brown-accent,#c8784a); margin-bottom:6px; }
+.habit-text h3 { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--beige-light,#f7ede3); line-height:1.25; margin:0 0 10px; }
+.card-divider { width:32px; height:1.5px; background:var(--brown-accent,#c8784a); border-radius:1px; opacity:0.7; }
 
 /* ============================================================
    BACK FACE
@@ -346,103 +81,127 @@
   transform: rotateY(180deg);
   border-radius: 22px;
   overflow: hidden;
-  background: var(--brown-dark, #1c0f08);
-  border: 1px solid rgba(196, 102, 31, 0.18);
+  background:
+    radial-gradient(ellipse at top left, rgba(196,102,31,0.09) 0%, transparent 50%),
+    linear-gradient(160deg, #221309 0%, #1c0f08 55%, #160b05 100%);
+  border: 1px solid rgba(196,102,31,0.2);
   box-shadow:
-    0 36px 80px rgba(95, 111, 82, 0.40),
-    inset 0 1px 0 rgba(196, 102, 31, 0.08);
+    0 36px 80px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(196,102,31,0.12),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
 }
 
+/* ─── Scrollable inner wrapper ─── */
 .habit-back-content {
-  padding: 22px 20px;
+  padding: 16px 16px 14px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0;
   overflow-y: auto;
   scrollbar-width: none;
 }
-
 .habit-back-content::-webkit-scrollbar { display: none; }
 
-/* ─── Back Header ─── */
+/* ─── Header: title + close button ─── */
 .back-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 8px;
+  padding-bottom: 11px;
+  margin-bottom: 13px;
+  border-bottom: 1px solid rgba(196,102,31,0.14);
 }
 
 .back-header h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  color: var(--beige-light, #f7ede3);
-  line-height: 1.25;
+  color: #f0e0d0;
+  line-height: 1.2;
   margin: 0;
+  flex: 1;
 }
 
 .flip-back-btn {
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  border: 1px solid rgba(196, 102, 31, 0.3);
-  background: transparent;
-  color: var(--text-muted, #b89880);
-  font-size: 0.7rem;
+  border: 1px solid rgba(196,102,31,0.22);
+  background: rgba(196,102,31,0.07);
+  color: rgba(184,152,128,0.6);
+  font-size: 0.6rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.25s, color 0.25s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
-
 .flip-back-btn:hover {
-  background: rgba(196, 102, 31, 0.15);
-  color: var(--brown-accent, #c8784a);
+  background: rgba(196,102,31,0.18);
+  border-color: rgba(196,102,31,0.48);
+  color: #c8784a;
 }
 
-/* ─── Recipe Sections ─── */
+/* ─── Section blocks (Ingredients / Method) ─── */
+.recipe-section {
+  margin-bottom: 13px;
+}
+
+/* Label with extending hairline rule */
 .recipe-section h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 3.5px;
   text-transform: uppercase;
-  color: var(--brown-accent, #c8784a);
-  margin-bottom: 8px;
+  color: #c8784a;
+  margin: 0 0 9px;
+}
+.recipe-section h4::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(196,102,31,0.14);
+  border-radius: 1px;
 }
 
-/* Ingredients */
+/* ─── Ingredients — 2-column grid ─── */
 .ingredients-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 10px;
 }
 
 .ingredients-list li {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  color: var(--text-muted, #b89880);
+  font-size: 0.71rem;
+  font-weight: 400;
+  color: rgba(184,152,128,0.88);
+  line-height: 1.3;
 }
 
 .ingredient-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--brown-accent, #c8784a);
   flex-shrink: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c8784a;
   opacity: 0.7;
 }
 
-/* Steps */
+/* ─── Steps — numbered stack ─── */
 .steps-list {
   list-style: none;
   padding: 0;
@@ -455,221 +214,115 @@
 .steps-list li {
   display: flex;
   align-items: flex-start;
-  gap: 9px;
+  gap: 8px;
   font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.78rem;
-  color: var(--text-muted, #b89880);
-  line-height: 1.4;
+  font-size: 0.71rem;
+  font-weight: 400;
+  color: rgba(184,152,128,0.88);
+  line-height: 1.45;
 }
 
 .step-number {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: 1px solid rgba(196, 102, 31, 0.35);
-  font-size: 0.6rem;
-  font-weight: 600;
-  color: var(--brown-accent, #c8784a);
+  background: rgba(196,102,31,0.13);
+  border: 1px solid rgba(196,102,31,0.28);
+  font-size: 0.56rem;
+  font-weight: 700;
+  color: #c8784a;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
-/* Save button on back face */
+/* ─── Save Button ─── */
+.habit-save {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+
 .habit-save-back {
   margin-top: auto;
-  justify-content: center;
   width: 100%;
+  padding: 10px 14px;
   border-radius: 10px;
-  padding: 10px;
+  background: rgba(196,102,31,0.1);
+  border: 1px solid rgba(196,102,31,0.2);
+  color: rgba(200,120,74,0.82);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.4px;
 }
+.habit-save-back:hover {
+  background: rgba(196,102,31,0.2);
+  border-color: rgba(196,102,31,0.46);
+  color: #c8784a;
+  box-shadow: 0 4px 14px rgba(196,102,31,0.15);
+  transform: translateY(-1px);
+}
+.habit-save-back.saved {
+  background: rgba(196,102,31,0.2);
+  border-color: rgba(196,102,31,0.48);
+  color: #d98b5a;
+}
+.habit-save-back.saved:hover {
+  background: rgba(196,102,31,0.12);
+  border-color: rgba(196,102,31,0.3);
+  color: #c8784a;
+}
+
+.save-icon { font-size: 0.88rem; line-height: 1; }
 
 /* ============================================================
    CAROUSEL DOTS
    ============================================================ */
-.carousel-dots {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding-top: 28px;
-}
-
-.carousel-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(95, 111, 82, 0.18);
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel-dot.active {
-  width: 22px;
-  border-radius: 3px;
-  background: var(--brown-accent, #c8784a);
-}
-
-.carousel-dot:hover:not(.active) {
-  background: rgba(196, 102, 31, 0.45);
-}
+.carousel-dots { display:flex; align-items:center; justify-content:center; gap:8px; padding-top:28px; }
+.carousel-dot { width:6px; height:6px; border-radius:50%; border:none; background:rgba(100,42,22,0.22); cursor:pointer; padding:0; transition:all 0.35s cubic-bezier(0.4,0,0.2,1); }
+.carousel-dot.active { width:22px; border-radius:3px; background:var(--brown-accent,#c8784a); }
+.carousel-dot:hover:not(.active) { background:rgba(196,102,31,0.45); }
 
 /* ============================================================
    PLANNER CTA
    ============================================================ */
-.planner-cta {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding-top: 72px;
-}
+.planner-cta { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; gap:28px; padding-top:72px; }
+.cta-ornament { flex:1; max-width:140px; height:1px; background:linear-gradient(to right,transparent,rgba(196,102,31,0.3)); }
+.planner-cta .cta-ornament:last-child { background:linear-gradient(to left,transparent,rgba(196,102,31,0.3)); }
 
-/* Flanking ornamental lines */
-.cta-ornament {
-  flex: 1;
-  max-width: 140px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, rgba(196, 102, 31, 0.3));
-}
-
-.planner-cta .cta-ornament:last-child {
-  background: linear-gradient(to left, transparent, rgba(196, 102, 31, 0.3));
-}
-
-/* Button */
-.planner-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 34px;
-  background: var(--brown-dark, #1c0f08);
-  color: var(--beige-light, #f7ede3);
-  border-radius: 100px;
-  text-decoration: none;
-  font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  overflow: hidden;
-  transition:
-    background 0.35s,
-    transform   0.3s,
-    box-shadow  0.35s;
-}
-
-.planner-btn:hover {
-  background: var(--brown-accent, #c8784a);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(196, 102, 31, 0.32);
-}
-
-.planner-btn:active {
-  transform: translateY(-1px);
-}
-
-/* Shimmer sweep */
-.btn-shimmer {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 35%,
-    rgba(254, 250, 224, 0.08) 50%,
-    transparent 65%
-  );
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0.6s ease;
-  pointer-events: none;
-}
-
-.planner-btn:hover .btn-shimmer {
-  background-position: -200% 0;
-}
-
-.btn-text {
-  position: relative;
-  z-index: 1;
-}
-
-.btn-arrow {
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s ease;
-}
-
-.planner-btn:hover .btn-arrow {
-  transform: translateX(4px);
-}
+.planner-btn { position:relative; display:inline-flex; align-items:center; gap:10px; padding:14px 34px; background:rgba(181,146,117,0.97); color:#642a16; border:1px solid rgba(248,238,229,0.3); border-radius:100px; text-decoration:none; font-family:'Jost','DM Sans',sans-serif; font-size:0.88rem; font-weight:600; letter-spacing:1.1px; text-transform:uppercase; overflow:hidden; transition:color 0.35s cubic-bezier(0.4,0,0.2,1),background 0.35s cubic-bezier(0.4,0,0.2,1),transform 0.35s cubic-bezier(0.4,0,0.2,1),box-shadow 0.35s cubic-bezier(0.4,0,0.2,1),border-color 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow:0 16px 34px rgba(181,146,117,0.34),0 5px 12px rgba(181,146,117,0.22),inset 0 1px 0 rgba(248,238,229,0.3),inset 0 -1px 0 rgba(181,146,117,0.18); }
+.planner-btn:hover { background:rgba(181,146,117,0.97); color:#642a16; border-color:rgba(248,238,229,0.4); transform:translateY(-3px) scale(1.015); box-shadow:0 20px 40px rgba(181,146,117,0.4),0 8px 16px rgba(181,146,117,0.28),inset 0 1px 0 rgba(248,238,229,0.34); }
+.planner-btn:active { transform:translateY(-1px); }
+.btn-shimmer { position:absolute; inset:0; background:linear-gradient(105deg,transparent 35%,rgba(254,250,224,0.08) 50%,transparent 65%); background-size:200% 100%; background-position:200% 0; transition:background-position 0.6s ease; pointer-events:none; }
+.planner-btn:hover .btn-shimmer { background-position:-200% 0; }
+.btn-text { position:relative; z-index:1; }
+.btn-arrow { position:relative; z-index:1; transition:transform 0.3s ease; }
+.planner-btn:hover .btn-arrow { transform:translateX(4px); }
 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  .habit-viewport {
-    height: 420px;
-  }
-
-  .habit-card {
-    width: 256px;
-    height: 350px;
-  }
+  .habit-viewport { height:420px; }
+  .habit-card { width:256px; height:350px; }
 }
 
 @media (max-width: 700px) {
-  .recipes-section {
-    padding-top: 60px;
-    padding-bottom: 80px;
-  }
-
-  .habit-viewport {
-    height: 400px;
-  }
-
-  .habit-card {
-    width: 240px;
-    height: 330px;
-    transform:
-      translateX(calc(var(--offset) * 260px))
-      translateZ(calc((1 - var(--abs)) * 40px - var(--abs) * 30px))
-      rotateY(calc(var(--offset) * -6deg))
-      scale(calc(1 - var(--abs) * 0.15));
-  }
-
-  .planner-cta {
-    gap: 16px;
-  }
-
-  .cta-ornament {
-    max-width: 60px;
-  }
+  .recipes-section { padding-top:60px; padding-bottom:80px; }
+  .habit-viewport { height:400px; }
+  .habit-card { width:240px; height:330px; transform: translateX(calc(var(--offset)*260px)) translateZ(calc((1 - var(--abs))*40px - var(--abs)*30px)) rotateY(calc(var(--offset)*-6deg)) scale(calc(1 - var(--abs)*0.15)); }
+  .planner-cta { gap:16px; }
+  .cta-ornament { max-width:60px; }
 }
 
 @media (max-width: 480px) {
-  .head-title {
-    font-size: 2rem;
-  }
-
-  .habit-card {
-    width: 220px;
-    height: 310px;
-    transform:
-      translateX(calc(var(--offset) * 230px))
-      translateZ(calc((1 - var(--abs)) * 30px - var(--abs) * 20px))
-      rotateY(calc(var(--offset) * -5deg))
-      scale(calc(1 - var(--abs) * 0.18));
-  }
-
-  .planner-btn {
-    padding: 12px 22px;
-    font-size: 0.82rem;
-  }
+  .head-title { font-size:2rem; }
+  .habit-card { width:220px; height:310px; transform: translateX(calc(var(--offset)*230px)) translateZ(calc((1 - var(--abs))*30px - var(--abs)*20px)) rotateY(calc(var(--offset)*-5deg)) scale(calc(1 - var(--abs)*0.18)); }
+  .planner-btn { padding:12px 22px; font-size:0.82rem; }
 }

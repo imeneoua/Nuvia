@@ -3,7 +3,7 @@ import "./Hero.css";
 
 export default function Hero() {
   const heroRef = useRef(null);
-  const [currentImage, setCurrentImage] = useState(0);
+  const [loadedImages, setLoadedImages] = useState({});
 
   const philosophies = [
     {
@@ -24,20 +24,20 @@ export default function Hero() {
   ];
 
   const images = [
-    { src: "/Pics/Features1.jpeg",                                              alt: "Blue Matcha Latte"          },
-    { src: "/Pics/The Easiest No-Bake Biscoff Cheesecake You'll Ever Make.jpg", alt: "No-bake Biscoff Cheesecake" },
-    { src: "/Cozy Masala Chai Latte.jpg",                                       alt: "Cozy Masala Chai Latte"     },
+    {
+      src: "/Pics/Flu Bomb _ Barbara O'Neill’s Recipe -.jpg",
+      alt: "Flu bomb recipe drink",
+    },
+    {
+      src: "public/Pics/télécharger (29).jpg",
+      alt: "Elegant plated dessert",
+    },
+    {
+      src: "public/Tangerine Light Mocktail _ Jeju Tangerine, Barley Tea & Yuzu.jpg",
+      alt: "Iced citrus cocktail with dried orange and rosemary",
+    },
   ];
 
-  // ── Auto-rotate every 4 s ──
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // ── IntersectionObserver fade-in ──
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -58,44 +58,27 @@ export default function Hero() {
 
   return (
     <section className="hero-wrapper" ref={heroRef}>
-
-      {/* ══════════════════════════════════════
-          DARK WAVE ZONE  (.hero-main)
-      ══════════════════════════════════════ */}
       <div className="hero-main">
-
-        {/* Ambient background layers */}
         <div className="hero-ambient">
           <div className="ambient-glow ambient-glow-1"></div>
           <div className="ambient-glow ambient-glow-2"></div>
           <div className="ambient-grain"></div>
         </div>
 
-        {/* Inner two-column layout */}
         <div className="hero-content">
-
-          {/* ── LEFT: Text ── */}
           <div className="the-text">
-
-            <span className="eyebrow fade-in-element">
-              <span className="eyebrow-accent">◆</span>
-              Nuvia EXPERIENCE
-              <span className="eyebrow-accent">◆</span>
-            </span>
-
-            <h1 className="fade-in-element">
+            <h1 className="fade-in-element visible">
               Cook <span className="accent">with intent</span>
               <br />
               Eat <span className="accent-green">beautifully</span>
             </h1>
 
-            <p className="subtitle fade-in-element">
+            <p className="subtitle fade-in-element visible">
               A refined way to discover recipes, plan meals, and transform
               everyday cooking into an experience worth savoring.
             </p>
 
-            {/* Philosophy cards grid */}
-            <div className="hero-philosophy-grid fade-in-element">
+            <div className="hero-philosophy-grid fade-in-element visible">
               {philosophies.map((item, index) => (
                 <div
                   key={item.number}
@@ -111,82 +94,52 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-
           </div>
-          {/* end .the-text */}
 
-          {/* ── RIGHT: Image gallery ── */}
-          <div className="hero-visual fade-in-element">
+          <div className="hero-visual fade-in-element visible">
             <div className="visual-gallery">
-
-              {/* Three stacked image cards */}
               <div className="image-stack">
-
-                <div className={`image-layer image-layer-1${currentImage === 0 ? " active" : ""}`}>
-                  <div className="visual-image">
-                    <img className="visual-photo" src={images[0].src} alt={images[0].alt} />
-                  </div>
-                </div>
-
-                <div className={`image-layer image-layer-2${currentImage === 1 ? " active" : ""}`}>
-                  <div className="visual-image">
-                    <img className="visual-photo" src={images[1].src} alt={images[1].alt} />
-                  </div>
-                </div>
-
-                <div className={`image-layer image-layer-3${currentImage === 2 ? " active" : ""}`}>
-                  <div className="visual-image">
-                    <img className="visual-photo" src={images[2].src} alt={images[2].alt} />
-                  </div>
-                </div>
-
-              </div>
-              {/* end .image-stack */}
-
-              {/* Decorative floating circles */}
-              <div className="visual-accent visual-accent-1"></div>
-              <div className="visual-accent visual-accent-2"></div>
-
-              {/* Dot navigation */}
-              <div className="gallery-dots">
-                {images.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`dot${currentImage === index ? " active" : ""}`}
-                    onClick={() => setCurrentImage(index)}
-                    aria-label={`View image ${index + 1}`}
+                {images.map((image, index) => (
+                  <div
+                    key={image.src}
+                    className={`image-layer image-layer-${index + 1}${
+                      loadedImages[index] ? " image-loaded" : ""
+                    }`}
+                    style={{ "--image-index": index }}
                   >
-                    <span className="dot-inner"></span>
-                  </button>
+                    <div className="visual-image">
+                      <img
+                        className="visual-photo"
+                        src={image.src}
+                        alt={image.alt}
+                        onLoad={() =>
+                          setLoadedImages((current) => ({
+                            ...current,
+                            [index]: true,
+                          }))
+                        }
+                      />
+                    </div>
+                  </div>
                 ))}
               </div>
-
             </div>
-            {/* end .visual-gallery */}
           </div>
-          {/* end .hero-visual */}
-
         </div>
-        {/* end .hero-content */}
 
-        {/* Sparkles */}
         <div className="hero-sparkles">
-          <span className="sparkle sparkle-1">✦</span>
-          <span className="sparkle sparkle-2">✦</span>
-          <span className="sparkle sparkle-3">✦</span>
-          <span className="sparkle sparkle-4">✦</span>
-          <span className="sparkle sparkle-5">✦</span>
+          <span className="sparkle sparkle-1">{"\u2726"}</span>
+          <span className="sparkle sparkle-2">{"\u2726"}</span>
+          <span className="sparkle sparkle-3">{"\u2726"}</span>
+          <span className="sparkle sparkle-4">{"\u2726"}</span>
+          <span className="sparkle sparkle-5">{"\u2726"}</span>
         </div>
 
-        {/* Scroll indicator */}
         <div className="scroll-indicator">
           <div className="scroll-line"></div>
           <span className="scroll-text">Explore</span>
         </div>
-
       </div>
-      {/* end .hero-main */}
-
     </section>
   );
 }
