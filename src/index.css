@@ -1,0 +1,115 @@
+:root {
+  font-family: "Playfair Display", "Cormorant Garamond", "Times New Roman", serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Squarespace-inspired palette */
+  --dark-olive: #9d9167;      /* Olive Harvest */
+  --laurel-green: #9d9167;    /* keep legacy token mapped to same olive tone */
+  --cornsilk: #e8d1a7;        /* Golden Batter */
+  --lemon-meringue: #e8d1a7;  /* keep legacy token mapped to same cream tone */
+  --camel: #84592b;           /* Toasted Caramel */
+  --alloy-orange: #743014;    /* Spiced Wine */
+  --russet: #442d1c;          /* Cowhide Cocoa */
+
+  /* Compatibility aliases used across existing component styles */
+  --beige: var(--lemon-meringue);
+  --beige-light: var(--cornsilk);
+  --brown-dark: var(--russet);
+  --brown-mid: var(--dark-olive);
+  --brown-accent: var(--alloy-orange);
+  --brown-hover: #84592b;
+  --text-nav: var(--cornsilk);
+  --text-muted: #bda074;
+  --border-subtle: rgba(132, 89, 43, 0.28);
+  --shadow-nav: 0 12px 38px rgba(68, 45, 28, 0.28);
+
+  --deep-brown: var(--russet);
+  --golden-beige: var(--lemon-meringue);
+  --soft-ivory: var(--cornsilk);
+  --burnished-gold: var(--alloy-orange);
+  --soft-charcoal: var(--dark-olive);
+  --muted-olive-green: var(--laurel-green);
+  --warm-amber: var(--camel);
+
+  --color-bg: var(--lemon-meringue);
+  --color-bg-alt: var(--cornsilk);
+  --color-surface: var(--cornsilk);
+  --color-surface-strong: var(--laurel-green);
+  --color-accent: var(--alloy-orange);
+  --color-accent-soft: rgba(116, 48, 20, 0.24);
+  --color-accent-strong: var(--russet);
+  --color-deep: var(--dark-olive);
+  --color-green: var(--laurel-green);
+  --color-text: #442d1c;
+  --color-text-muted: rgba(68, 45, 28, 0.72);
+
+  color-scheme: light;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--color-accent-strong);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--color-deep);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(80% 120% at 0% 0%, rgba(157, 145, 103, 0.26) 0%, transparent 58%),
+    radial-gradient(80% 100% at 100% 0%, rgba(132, 89, 43, 0.2) 0%, transparent 62%),
+    var(--color-bg);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-accent);
+  color: var(--color-deep);
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s, color 0.25s;
+}
+button:hover {
+  border-color: var(--color-accent-strong);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+  a:hover {
+    color: var(--color-deep);
+  }
+  button {
+    background-color: var(--color-accent);
+  }
+}
+
+
