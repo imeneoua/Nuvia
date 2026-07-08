@@ -1,0 +1,332 @@
+/* ============================================================
+   Footer.css  —  Nuvia Culinary Experience
+   Dark zone that closes the page — mirrors hero-main palette
+   ============================================================ */
+
+/* ─── Footer Shell ─── */
+.footer {
+  --footer-deep: #642a16;
+  --footer-sage: #8c8a67;
+  --footer-gold: #bc8653;
+  --footer-soft: rgba(100, 42, 22, 0.78);
+  --footer-subtle: rgba(100, 42, 22, 0.62);
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 241, 0.14) 0%, rgba(100, 42, 22, 0.08) 100%),
+    linear-gradient(135deg, rgba(188, 134, 83, 0.16) 0%, transparent 42%),
+    #b59275;
+  overflow: hidden;
+
+  /* Wavy top edge biting into the beige above — inverse of hero-main wave */
+  margin-top: 0;
+}
+
+.footer::before {
+  content: '';
+  display: block;
+  height: 100px;
+  background: #b59275;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  margin-bottom: -2px;
+}
+
+/* ─── Ambient (same style as hero-ambient) ─── */
+.footer-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-ambient .ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.footer-ambient .ambient-glow-1 {
+  top: -60px; right: -80px;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(116,48,20,.16) 0%, transparent 70%);
+}
+
+.footer-ambient .ambient-glow-2 {
+  bottom: -40px; left: -100px;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(157,145,103,.12) 0%, transparent 65%);
+}
+
+.footer-ambient .ambient-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── Container ─── */
+.footer-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 60px 0;
+}
+
+/* ─── Inner row (brand + links) ─── */
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 64px 0 48px;
+  border-bottom: 1px solid rgba(100,42,22,.14);
+}
+
+/* ============================================================
+   BRAND COLUMN
+   ============================================================ */
+.footer-brand { max-width: 300px; }
+
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.brand-logo h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--footer-deep);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+/* Accent italic N — same as navbar */
+.brand-logo .logo-n {
+  color: var(--footer-sage);
+  font-style: italic;
+}
+
+/* Ornamental divider ◆ */
+.brand-decorator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.decorator-line {
+  flex: 1;
+  max-width: 48px;
+  height: 1px;
+  background: rgba(100,42,22,.26);
+  border-radius: 1px;
+}
+
+.decorator-diamond {
+  font-size: 0.55rem;
+  color: var(--footer-gold);
+  opacity: 0.7;
+}
+
+.brand-tagline {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--footer-deep);
+  margin-bottom: 12px;
+}
+
+.brand-description {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--footer-soft);
+}
+
+/* ============================================================
+   LINKS COLUMNS
+   ============================================================ */
+.footer-links-group {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-section { min-width: 130px; }
+
+/* Section heading — same style as recipe-section h4 on back face */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--footer-deep);
+  margin-bottom: 20px;
+}
+
+.title-accent {
+  font-size: 0.5rem;
+  color: var(--footer-gold);
+  opacity: 0.7;
+}
+
+/* Nav list */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--footer-subtle);
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  transition: color .3s;
+  group: true;
+}
+
+.footer-link .link-text { transition: color .3s; }
+
+.footer-link .link-arrow {
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .3s, transform .3s;
+}
+
+.footer-link:hover .link-text { color: var(--footer-deep); }
+.footer-link:hover .link-arrow { color: var(--footer-deep); opacity: 1; transform: translateX(0); }
+
+/* Social links — icon + label */
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.social-link svg {
+  flex-shrink: 0;
+  transition: color .3s;
+}
+
+.social-link:hover svg { color: var(--footer-deep); }
+
+/* ============================================================
+   BOTTOM BAR
+   ============================================================ */
+.footer-bottom {
+  padding: 24px 0 32px;
+}
+
+.footer-bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: var(--footer-subtle);
+}
+
+.copyright-icon { font-size: 0.75rem; }
+
+.separator {
+  opacity: 0.4;
+  font-size: 0.6rem;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meta-item {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: var(--footer-subtle);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* ============================================================
+   SPARKLES (same keyframe as Hero / Recipes — reuse twinkle)
+   ============================================================ */
+.footer-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer-sparkles .sparkle {
+  position: absolute;
+  color: rgba(100, 42, 22, 0.42);
+  opacity: 0;
+  animation: twinkle 3.5s ease-in-out infinite;
+}
+
+.footer-sparkles .sparkle-1 { top: 28%; left: 24%; font-size: 0.7rem;  animation-delay: 0s; }
+.footer-sparkles .sparkle-2 { top: 55%; left: 68%; font-size: 0.9rem;  animation-delay: 1.1s; }
+.footer-sparkles .sparkle-3 { top: 72%; left: 42%; font-size: 0.6rem;  animation-delay: 2s; }
+
+@keyframes twinkle {
+  0%,  100% { opacity: 0.1;  transform: scale(0.8); }
+  50%        { opacity: 0.55; transform: scale(1.3); }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .footer-container { padding: 0 36px; }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-brand { max-width: 100%; }
+
+  .footer-links-group { gap: 40px; }
+}
+
+@media (max-width: 560px) {
+  .footer-container { padding: 0 20px; }
+
+  .footer-links-group {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer::before {
+    height: 60px;
+  }
+}
