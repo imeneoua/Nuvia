@@ -6,11 +6,11 @@
   /* Squarespace-inspired palette */
   --dark-olive: #9d9167;      /* Olive Harvest */
   --laurel-green: #9d9167;    /* keep legacy token mapped to same olive tone */
-  --cornsilk: #e8d1a7;        /* Golden Batter */
+  --cornsilk: #e8d1a7;        /* card titles */
   --lemon-meringue: #e8d1a7;  /* keep legacy token mapped to same cream tone */
   --camel: #84592b;           /* Toasted Caramel */
-  --alloy-orange: #743014;    /* Spiced Wine */
-  --russet: #442d1c;          /* Cowhide Cocoa */
+  --alloy-orange: #743014;    /* lines */
+  --russet: #442d1c;          /* titles */
 
   /* Compatibility aliases used across existing component styles */
   --beige: var(--lemon-meringue);
@@ -22,7 +22,7 @@
   --text-nav: var(--cornsilk);
   --text-muted: #bda074;
   --border-subtle: rgba(132, 89, 43, 0.28);
-  --shadow-nav: 0 12px 38px rgba(68, 45, 28, 0.28);
+  --shadow-nav: 0 12px 38px rgba(31, 28, 68, 0.28);
 
   --deep-brown: var(--russet);
   --golden-beige: var(--lemon-meringue);

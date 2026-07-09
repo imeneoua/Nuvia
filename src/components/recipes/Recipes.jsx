@@ -231,6 +231,15 @@ export default function Recipes() {
 
       <div className="habit-carousel">
         <div className="carousel-glow"></div>
+
+          <button
+            className="carousel-arrow left"
+            onClick={() => setActiveIndex((i) => wrapIndex(i - 1, total))}
+            aria-label="Previous recipe"
+          >
+            &#10094;
+          </button>
+
         <div className="habit-viewport">
           {recipes.map((r, index) =>
             renderCard({
@@ -244,6 +253,14 @@ export default function Recipes() {
             })
           )}
         </div>
+
+          <button
+            className="carousel-arrow right"
+            onClick={() => setActiveIndex((i) => wrapIndex(i + 1, total))}
+            aria-label="Next recipe"
+          >
+            &#10095;
+          </button>
 
         <div className="carousel-dots">
           {recipes.map((_, i) => (
@@ -269,6 +286,14 @@ export default function Recipes() {
 
       <div className="habit-carousel">
         <div className="carousel-glow"></div>
+
+        <button
+            className="carousel-arrow left"
+            onClick={() => setDrinkActiveIndex((i) => wrapIndex(i - 1, drinkTotal))}
+            aria-label="Previous drink"
+          >
+            &#10094;
+          </button>
         <div className="habit-viewport">
           {drinks.map((d, index) =>
             renderCard({
@@ -282,6 +307,14 @@ export default function Recipes() {
             })
           )}
         </div>
+
+          <button
+            className="carousel-arrow right"
+            onClick={() => setDrinkActiveIndex((i) => wrapIndex(i + 1, drinkTotal))}
+            aria-label="Next drink"
+          >
+            &#10095;
+          </button>
 
         <div className="carousel-dots">
           {drinks.map((_, i) => (
