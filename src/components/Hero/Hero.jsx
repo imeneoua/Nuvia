@@ -29,7 +29,7 @@ export default function Hero() {
       alt: "Flu bomb recipe drink",
     },
     {
-      src: "public/Pics/télécharger (29).jpg",
+      src: "public/noodles (1).jpg",
       alt: "Elegant plated dessert",
     },
     {
@@ -68,7 +68,7 @@ export default function Hero() {
         <div className="hero-content">
           <div className="the-text">
             <h1 className="fade-in-element visible">
-              Cook <span className="accent">with intent</span>
+              Cook <span className="accent"> with care</span>
               <br />
               Eat <span className="accent-green">beautifully</span>
             </h1>
@@ -133,11 +133,6 @@ export default function Hero() {
           <span className="sparkle sparkle-3">{"\u2726"}</span>
           <span className="sparkle sparkle-4">{"\u2726"}</span>
           <span className="sparkle sparkle-5">{"\u2726"}</span>
-        </div>
-
-        <div className="scroll-indicator">
-          <div className="scroll-line"></div>
-          <span className="scroll-text">Explore</span>
         </div>
       </div>
     </section>
