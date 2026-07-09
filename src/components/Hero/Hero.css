@@ -26,7 +26,7 @@
 }
 
 /* ============================================================
-   DARK WAVE ZONE  (dark brown background with wavy edges)
+   HERO ZONE
    ============================================================ */
 .hero-main {
   position: relative;
@@ -35,29 +35,8 @@
     linear-gradient(135deg, rgba(188, 134, 83, 0.16) 0%, transparent 42%),
     var(--hero-base);
   padding-top: 120px;
-  /* Extra bottom padding so content never sits behind the wave */
-  padding-bottom: 160px;
-  /* No clip-path here — the wave is formed purely by ::after */
-}
-
-/* Wavy bottom wave — beige shape that sits ON TOP of the dark zone.
-   Key fixes:
-   · Wider than 100% so rounded ends never show as a thin arc line
-   · bottom value pulls it up enough to cover the dark edge fully
-   · outline trick prevents subpixel antialiasing fringe            */
-.hero-main::after {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  left: -8%;
-  right: -8%;
-  height: 180px;
-  background: var(--hero-wave);
-  /* elliptical top arc — wider radius = gentler, more wave-like curve */
-  border-radius: 50% 50% 0 0 / 80px 80px 0 0;
-  /* outline eliminates the 1-px antialiasing fringe */
-  outline: 2px solid var(--hero-wave);
-  z-index: 3;
+  padding-bottom: 80px;
+  /* Wave removed — flat bottom edge now */
 }
 
 /* ─── Ambient Layers ─── */
