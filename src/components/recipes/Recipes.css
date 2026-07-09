@@ -21,19 +21,19 @@
 /* ============================================================
    SECTION HEADER
    ============================================================ */
-.recipes-head { position:relative; z-index:2; text-align:center; padding:0 20px 56px; }
+.recipes-head { position:relative; z-index:2; text-align:center; padding:0 20px 20px; }
 .head-ornament { width:1px; height:48px; background:linear-gradient(to bottom,transparent,var(--brown-accent,#c8784a)); margin:0 auto 20px; }
 .head-label { display:inline-block; font-family:'Jost','DM Sans',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:5px; text-transform:uppercase; color:var(--brown-accent,#c8784a); margin-bottom:14px; }
 .head-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,4.5vw,3.6rem); font-weight:900; color:var(--brown-dark,#1c0f08); line-height:1.08; letter-spacing:-0.5px; margin-bottom:12px; }
-.head-subtitle { font-family:'Jost','DM Sans',sans-serif; font-size:0.95rem; font-weight:300; color:var(--text-muted,#b89880); letter-spacing:0.3px; }
-.recipes-head--alt { padding-top:80px; }
+.head-subtitle { font-family:'Jost','DM Sans',sans-serif; font-size:1rem; font-weight:400; color:#856248; letter-spacing:0.3px; }
+.recipes-head--alt { padding-top:30px; }
 
 /* ============================================================
    CAROUSEL SHELL
    ============================================================ */
-.habit-carousel { position:relative; z-index:2; width:100%; padding-bottom:52px; }
+.habit-carousel { position:relative; z-index:2; width:100%; padding-bottom:2px; }
 .carousel-glow { position:absolute; bottom:48px; left:50%; transform:translateX(-50%); width:340px; height:160px; background:radial-gradient(ellipse,rgba(196,102,31,0.13) 0%,transparent 70%); pointer-events:none; z-index:0; }
-.habit-viewport { position:relative; height:440px; display:flex; align-items:center; justify-content:center; perspective:1400px; overflow:visible; }
+.habit-viewport { padding: 0 120px; position:relative; height:440px; display:flex; align-items:center; justify-content:center; perspective:1400px; overflow:visible; }
 
 /* ============================================================
    CARD
@@ -305,6 +305,46 @@
 .btn-arrow { position:relative; z-index:1; transition:transform 0.3s ease; }
 .planner-btn:hover .btn-arrow { transform:translateX(4px); }
 
+/* the arrows to navigate */
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    background: rgba(255, 255, 255, 0.297);
+    backdrop-filter: blur(10px);
+
+    color: #5b311d;
+    font-size: 20px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all .3s ease;
+    z-index: 30;
+}
+
+.carousel-arrow:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-arrow.left {
+    left: 30px;
+}
+
+.carousel-arrow.right {
+    right: 30px;
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
@@ -314,7 +354,7 @@
 }
 
 @media (max-width: 700px) {
-  .recipes-section { padding-top:60px; padding-bottom:80px; }
+  .recipes-section { padding-top:50px; padding-bottom:80px; }
   .habit-viewport { height:400px; }
   .habit-card { width:240px; height:330px; transform: translateX(calc(var(--offset)*260px)) translateZ(calc((1 - var(--abs))*40px - var(--abs)*30px)) rotateY(calc(var(--offset)*-6deg)) scale(calc(1 - var(--abs)*0.15)); }
   .planner-cta { gap:16px; }

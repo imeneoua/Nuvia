@@ -5,32 +5,30 @@
 
 /* ─── Footer Shell ─── */
 .footer {
-  --footer-deep: #642a16;
-  --footer-sage: #8c8a67;
-  --footer-gold: #bc8653;
-  --footer-soft: rgba(100, 42, 22, 0.78);
-  --footer-subtle: rgba(100, 42, 22, 0.62);
+  --footer-bg: #642a16;
+  --footer-text: #F6EFE6;
+  --footer-muted: #D8C7B6;
+  --footer-subtle: rgba(246, 239, 230, 0.55);
+  --footer-accent: #BC8653;
+  --footer-border: rgba(255, 255, 255, .12);
+
   position: relative;
   background:
-    linear-gradient(180deg, rgba(255, 248, 241, 0.14) 0%, rgba(100, 42, 22, 0.08) 100%),
-    linear-gradient(135deg, rgba(188, 134, 83, 0.16) 0%, transparent 42%),
-    #b59275;
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent),
+    #522517;
   overflow: hidden;
-
-  /* Wavy top edge biting into the beige above — inverse of hero-main wave */
-  margin-top: 0;
 }
 
 .footer::before {
   content: '';
   display: block;
   height: 100px;
-  background: #b59275;
+  background: #52251710;
   border-radius: 0 0 50% 50% / 0 0 100% 100%;
   margin-bottom: -2px;
 }
 
-/* ─── Ambient (same style as hero-ambient) ─── */
+/* ─── Ambient ─── */
 .footer-ambient {
   position: absolute;
   inset: 0;
@@ -46,13 +44,13 @@
 .footer-ambient .ambient-glow-1 {
   top: -60px; right: -80px;
   width: 480px; height: 480px;
-  background: radial-gradient(circle, rgba(116,48,20,.16) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 214, 170, .07) 0%, transparent 70%);
 }
 
 .footer-ambient .ambient-glow-2 {
   bottom: -40px; left: -100px;
   width: 360px; height: 360px;
-  background: radial-gradient(circle, rgba(157,145,103,.12) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(188, 134, 83, .10) 0%, transparent 65%);
 }
 
 .footer-ambient .ambient-grain {
@@ -78,13 +76,13 @@
   justify-content: space-between;
   gap: 60px;
   padding: 64px 0 48px;
-  border-bottom: 1px solid rgba(100,42,22,.14);
+  border-bottom: 1px solid var(--footer-border);
 }
 
 /* ============================================================
-   BRAND COLUMN
+   BRAND + NEWSLETTER COLUMN
    ============================================================ */
-.footer-brand { max-width: 300px; }
+.footer-brand { max-width: 380px; }
 
 .brand-logo {
   display: flex;
@@ -97,19 +95,17 @@
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--footer-deep);
+  color: var(--footer-text);
   margin: 0;
   line-height: 1;
   letter-spacing: -0.5px;
 }
 
-/* Accent italic N — same as navbar */
 .brand-logo .logo-n {
-  color: var(--footer-sage);
+  color: #667761;
   font-style: italic;
 }
 
-/* Ornamental divider ◆ */
 .brand-decorator {
   display: flex;
   align-items: center;
@@ -120,32 +116,87 @@
   flex: 1;
   max-width: 48px;
   height: 1px;
-  background: rgba(100,42,22,.26);
+  background: var(--footer-border);
   border-radius: 1px;
 }
 
 .decorator-diamond {
   font-size: 0.55rem;
-  color: var(--footer-gold);
-  opacity: 0.7;
-}
-
-.brand-tagline {
-  font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--footer-deep);
-  margin-bottom: 12px;
+  color: var(--footer-accent);
+  opacity: 0.85;
 }
 
 .brand-description {
   font-family: 'Jost', 'DM Sans', sans-serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 300;
   line-height: 1.75;
-  color: var(--footer-soft);
+  color: var(--footer-muted);
+  margin-bottom: 24px;
+}
+
+/* Newsletter form */
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.newsletter-input {
+  flex: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 70px;
+  background: #F8F2E9;
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  color: #642a16;
+  outline: none;
+  transition: box-shadow .3s, background .3s;
+}
+
+.newsletter-input::placeholder {
+  color: #8a7468;
+  opacity: 0.8;
+}
+
+.newsletter-input:focus {
+  box-shadow: 0 0 0 2px var(--footer-accent);
+  background: #fff;
+}
+
+.newsletter-button {
+  flex-shrink: 0;
+  padding: 12px 23px;
+  border: none;
+  border-radius: 60px;
+  background: #667761;
+  color: #fff;
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background .3s, transform .2s;
+}
+
+.newsletter-button:hover {
+  background: #83977c;
+  transform: translateY(-1px);
+}
+
+.newsletter-note {
+  font-family: 'Jost', 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--footer-subtle);
+}
+
+.newsletter-success {
+  color: var(--footer-text);
+  font-weight: 500;
 }
 
 /* ============================================================
@@ -158,7 +209,6 @@
 
 .footer-section { min-width: 130px; }
 
-/* Section heading — same style as recipe-section h4 on back face */
 .section-title {
   display: flex;
   align-items: center;
@@ -168,35 +218,34 @@
   font-weight: 700;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--footer-deep);
-  margin-bottom: 20px;
+  color: var(--footer-accent);
+  margin-bottom: 22px;
 }
 
 .title-accent {
   font-size: 0.5rem;
-  color: var(--footer-gold);
-  opacity: 0.7;
+  color: var(--footer-accent);
+  opacity: 0.85;
 }
 
-/* Nav list */
 .footer-nav {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .footer-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
+  min-height: 32px;
   text-decoration: none;
-  color: var(--footer-subtle);
+  color: var(--footer-muted);
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.88rem;
   font-weight: 400;
   transition: color .3s;
-  group: true;
 }
 
 .footer-link .link-text { transition: color .3s; }
@@ -208,23 +257,39 @@
   transition: opacity .3s, transform .3s;
 }
 
-.footer-link:hover .link-text { color: var(--footer-deep); }
-.footer-link:hover .link-arrow { color: var(--footer-deep); opacity: 1; transform: translateX(0); }
+.footer-link:hover .link-text { color: var(--footer-text); }
+.footer-link:hover .link-arrow { color: var(--footer-accent); opacity: 1; transform: translateX(0); }
 
-/* Social links — icon + label */
+/* Social links — icon badge + label, aligned on the same row rhythm as Explore */
 .social-link {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   justify-content: flex-start;
 }
 
-.social-link svg {
+.social-icon {
   flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid var(--footer-border);
+  transition: background .3s, border-color .3s, transform .3s;
+}
+
+.social-icon svg {
+  color: var(--footer-muted);
   transition: color .3s;
 }
 
-.social-link:hover svg { color: var(--footer-deep); }
+.social-link:hover .social-icon {
+  background: var(--footer-accent);
+  border-color: var(--footer-accent);
+  transform: translateY(-2px);
+}
+
+.social-link:hover .social-icon svg { color: #fff; }
 
 /* ============================================================
    BOTTOM BAR
@@ -247,32 +312,37 @@
   gap: 8px;
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.8rem;
-  color: var(--footer-subtle);
+  color: var(--footer-muted);
 }
 
 .copyright-icon { font-size: 0.75rem; }
 
-.separator {
-  opacity: 0.4;
-  font-size: 0.6rem;
-}
-
-.footer-meta {
+.footer-legal {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.meta-item {
+.legal-link {
   font-family: 'Jost', 'DM Sans', sans-serif;
   font-size: 0.78rem;
+  color: var(--footer-muted);
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.legal-link:hover {
+  color: var(--footer-accent);
+}
+
+.separator {
+  opacity: 0.5;
+  font-size: 0.6rem;
   color: var(--footer-subtle);
-  opacity: 0.7;
-  font-style: italic;
 }
 
 /* ============================================================
-   SPARKLES (same keyframe as Hero / Recipes — reuse twinkle)
+   SPARKLES
    ============================================================ */
 .footer-sparkles {
   position: absolute;
@@ -283,7 +353,7 @@
 
 .footer-sparkles .sparkle {
   position: absolute;
-  color: rgba(100, 42, 22, 0.42);
+  color: rgba(255, 255, 255, 0.35);
   opacity: 0;
   animation: twinkle 3.5s ease-in-out infinite;
 }
@@ -316,6 +386,14 @@
 @media (max-width: 560px) {
   .footer-container { padding: 0 20px; }
 
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-button {
+    width: 100%;
+  }
+
   .footer-links-group {
     flex-direction: column;
     gap: 32px;
@@ -324,6 +402,10 @@
   .footer-bottom-content {
     flex-direction: column;
     text-align: center;
+  }
+
+  .footer-legal {
+    justify-content: center;
   }
 
   .footer::before {
