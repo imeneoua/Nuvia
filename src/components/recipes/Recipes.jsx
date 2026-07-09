@@ -280,7 +280,7 @@ export default function Recipes() {
       <div className="recipes-head recipes-head--alt">
         <div className="head-ornament"></div>
         <span className="head-label">BEVERAGE COLLECTION</span>
-        <h2 className="head-title">Liquid </h2>
+        <h2 className="head-title">Drinks </h2>
         <p className="head-subtitle">Crafted moments in every sip</p>
       </div>
 
