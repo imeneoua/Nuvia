@@ -27,3 +27,8 @@ backend/.venv/
 
 # Environment variables
 backend/.env
+src/components/chatbot/backend/.env
+src/components/chatbot/backend/.venv/
+
+__pycache__/
+*.pyc
