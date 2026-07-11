@@ -32,3 +32,6 @@ src/components/chatbot/backend/.venv/
 
 __pycache__/
 *.pyc
+
+src/components/chatbot/backend/data/
+*.csv
