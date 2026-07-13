@@ -35,3 +35,4 @@ __pycache__/
 
 # Ignore only the dataset
 src/components/chatbot/backend/data/recipes_data.csv
+src/components/chatbot/backend/data/Dessert.csv
