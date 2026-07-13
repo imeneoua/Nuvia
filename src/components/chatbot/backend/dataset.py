@@ -1,13 +1,22 @@
 import pandas as pd
 
-# Read CSV file
-df = pd.read_csv("recipes_data.csv")
+files = [
+    "data/Food.csv",
+    "data/Smoothie.csv",
+    "data/final.csv",
+    "data/recipes_data.csv",
+    "data/Dessert.csv"
+]
 
-# Display the first 5 rows
-print(df.head())
+for file in files:
 
-# Display basic information
-print(df.info())
+    print("\n" + "="*60)
+    print(file)
 
-# Display column names
-print(df.columns)
+    if "Dessert" in file:
+        df = pd.read_csv(file, sep=";", encoding="latin1")
+    else:
+        df = pd.read_csv(file)
+
+    print(df.columns.tolist())
+    print(df.head(2))
