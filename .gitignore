@@ -35,3 +35,6 @@ __pycache__/
 
 # Ignore only the dataset
 src/components/chatbot/backend/data/recipes_data.csv
+
+# Ignore the Tinarecipe.csv file
+src/components/chatbot/backend/data/Tinarecipe.csv
