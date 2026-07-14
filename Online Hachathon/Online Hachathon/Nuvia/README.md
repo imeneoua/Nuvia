@@ -1,132 +1,96 @@
-# 🍽️ Nuvia — Online Hackathon Edition
+# 🍽️ Nuvia - La Plateforme Culinaire Nouvelle Génération
 
-> *"De l'inspiration à l'assiette."*
-
-**Nuvia** est une plateforme web culinaire nouvelle génération développée dans le cadre du Hackathon en ligne. Ce dépôt contient la version **Online Hackathon** du projet, axée sur l'authentification sécurisée et le tableau de bord administrateur.
+**Nuvia** est une plateforme web complète conçue pour révolutionner la gestion quotidienne des repas. Bien plus qu'un simple recueil de recettes, Nuvia est un véritable écosystème culinaire développé pour le Hackathon. Elle accompagne les utilisateurs de l'inspiration jusqu'à la planification, tout en intégrant une intelligence artificielle de pointe.
 
 ---
 
-## ✨ Fonctionnalités Clés
+## ✨ Les Fonctionnalités de la Plateforme
 
-### 🔐 Authentification Complète
-- **Inscription avec OTP** : L'utilisateur saisit son email, reçoit un code OTP à 6 chiffres par email, et valide son compte.
-- **Connexion Email / Mot de Passe** : Authentification classique avec JWT.
-- **Google OAuth** : Connexion instantanée via le bouton Google (propulsé par `@react-oauth/google`).
+Nuvia propose une expérience utilisateur riche à travers plusieurs modules interconnectés :
 
-### 📊 Dashboard d'Administration
-- Affichage de tous les utilisateurs enregistrés en temps réel.
-- Avatars dynamiques générés via **DiceBear API**.
-- Suppression d'utilisateurs avec confirmation modale.
-- Visualisation des détails de chaque compte.
+### 1. 🍳 Découverte et Exploration (Explore & Recipes)
+- **Bibliothèque Massive :** Un catalogue interactif permettant d'explorer des recettes variées.
+- **Base de données Locale :** Intégration d'un dataset filtré d'un million de recettes (1M_Final.csv) pour fournir des résultats exhaustifs.
 
----
+### 2. 📅 Planification des Repas (Planner)
+- Un outil de planification interactif pour organiser les repas de la semaine.
+- Aide les utilisateurs à mieux s'organiser, réduire le gaspillage alimentaire et gagner du temps au quotidien.
 
-## 🛠️ Stack Technique
+### 3. 🤖 Assistant Culinaire Intelligent (Chatbot IA)
+- **Mode Vocal & Textuel :** Une interface flottante (façon ChatGPT Voice) accessible à tout moment pour discuter avec l'IA.
+- **RAG & Multilinguisme :** Propulsé par l'API Groq (Llama-3.1-8b), l'assistant cherche dans nos données locales et traduit à la volée en Français, Anglais ou Arabe.
 
-### Frontend
-| Technologie | Usage |
-|---|---|
-| **React.js + Vite** | Framework UI |
-| **React Router DOM** | Navigation entre les pages |
-| **@react-oauth/google** | Authentification Google |
-| **CSS Modulaire** | Glassmorphism + design premium |
+### 4. 👤 Espace Utilisateur (Profile & Auth)
+- **Sécurité et Fluidité :** Authentification sécurisée par email/mot de passe (OTP) ou via **Google OAuth**.
+- **Gestion de Profil :** Un espace dédié pour sauvegarder les préférences de l'utilisateur.
 
-### Backend (partagé avec `server/app.py`)
-| Technologie | Usage |
-|---|---|
-| **FastAPI** | API REST (Auth, Admin) |
-| **SQLite** (`users.db`) | Base de données utilisateurs |
-| **Uvicorn** | Serveur ASGI |
-| **smtplib** | Envoi des emails OTP |
+### 5. 📊 Dashboard d'Administration (Admin)
+- **Gestion Centralisée :** Un tableau de bord premium (intégré nativement en React) pour les administrateurs.
+- **Interface Avancée :** Affichage des utilisateurs avec avatars dynamiques (Dicebear), informations de connexion, et suppression sécurisée liée à notre base de données SQLite.
 
 ---
 
-## 🚀 Démarrage Rapide
+## 🛠️ Stack Technique Globale
+
+### Frontend (Application Client - React/Vite)
+- **Framework & Routage :** React.js, Vite, React Router DOM (pour la navigation entre Home, Explore, Planner, Profile, Admin).
+- **Design System :** CSS modulaire, approche Glassmorphism, typographie moderne (Inter).
+- **Intégrations :** Web Speech API (Voix), Google OAuth.
+
+### Backend (Serveur API - Python/FastAPI)
+- **API Rapide :** FastAPI pour gérer l'authentification et les requêtes complexes.
+- **Data & RAG :** Utilisation de `pandas` pour la recherche rapide dans notre immense base CSV locale.
+- **Base de Données :** SQLite (`users.db`) pour un stockage persistant et léger des comptes utilisateurs.
+
+---
+
+## 🚀 Installation & Démarrage (Local)
 
 ### 1. Prérequis
-- Node.js v18+
-- Python 3.8+
+- **Node.js** (v18+)
+- **Python** (3.8+)
+- Une clé API **Groq** (`VITE_GROQ_API_KEY`)
 
-### 2. Backend (FastAPI)
+### 2. Lancement du Serveur Backend (FastAPI)
+Ouvrez un terminal dans le dossier principal :
 ```bash
 cd server
 pip install fastapi uvicorn pandas
 python app.py
 ```
-> Le serveur tourne sur **http://localhost:8000**
+> Le serveur backend (port 8000) gère l'authentification, les recherches IA, et les requêtes du Dashboard Admin.
 
-### 3. Frontend (React/Vite)
+### 3. Lancement de la Plateforme (React)
+Ouvrez un second terminal :
 ```bash
-cd "Online Hachathon/Online Hachathon/Nuvia"
+cd Nuvia-main/Nuvia-main
 npm install
 npm run dev
 ```
-> La plateforme est accessible sur **http://localhost:5173**
+> La plateforme complète est maintenant accessible sur `http://localhost:5173`. Naviguez librement entre l'Accueil, le Planner, l'Explore, et l'Admin !
 
 ---
 
-## 🗺️ Pages Disponibles
-
-| Page | URL | Description |
-|---|---|---|
-| 🏠 Accueil | `/` | Page d'accueil Nuvia |
-| 🔑 Connexion | `/login` | Login email/Google |
-| 📝 Inscription | `/register` | Inscription + OTP |
-| 🛡️ Admin | `/admin` | Dashboard administrateur |
-
----
-
-## 🔄 Flux d'Authentification OTP
-
-```
-1. Utilisateur → Saisit Name / Email / Password
-2. Clic "Send OTP Code" → POST /api/auth/send-otp
-3. Backend → Génère OTP 6 chiffres → Envoie email
-4. Utilisateur → Saisit le code reçu par email
-5. Clic "Verify & Create Account" → POST /api/auth/register
-6. Succès → Redirigé vers /profile
-```
-
----
-
-## 📂 Architecture du Projet
+## 📂 Architecture de la Plateforme
 
 ```text
-Online Hachathon/Online Hachathon/Nuvia/
-├── src/
-│   ├── components/
-│   │   └── navbar/       # Barre de navigation
-│   ├── pages/
-│   │   ├── Auth/         # AuthModal.jsx (Login + Register + OTP + Google)
-│   │   ├── Admin/        # AdminDashboard.jsx + .css
-│   │   ├── Home/         # Page d'accueil
-│   │   ├── Explore/      # Exploration de recettes
-│   │   ├── Profile/      # Profil utilisateur
-│   │   └── Planner/      # Planificateur de repas
-│   └── App.jsx           # Routeur principal (avec GoogleOAuthProvider)
-├── .env                  # VITE_API_URL + VITE_GROQ_API_KEY
-└── package.json
+Hackathon imene/
+├── 1M_Final_Cleaned_V3.csv     # Base de données massive des recettes
+├── users.db                    # Base SQLite de la plateforme
+├── server/
+│   └── app.py                  # API Backend (Auth, RAG, Admin API)
+└── Nuvia-main/Nuvia-main/      # Application Front-End (React)
+    ├── src/
+    │   ├── components/         # Composants globaux (Navbar, Footer, Hero, Chatbot)
+    │   ├── pages/              
+    │   │   ├── Auth/           # Inscription et Connexion Google
+    │   │   ├── Explore/        # Exploration des recettes
+    │   │   ├── Planner/        # Planification des repas
+    │   │   ├── Profile/        # Espace Utilisateur
+    │   │   └── Admin/          # Dashboard d'administration complet
+    │   └── App.jsx             # Routeur de la plateforme
+    └── vite.config.js          # Configuration
 ```
 
 ---
-
-## 🌐 Variables d'Environnement
-
-```env
-VITE_API_URL=http://localhost:8000
-VITE_GROQ_API_KEY=your_groq_api_key
-```
-
----
-
-## 🏆 Points Forts pour la Présentation Hackathon
-
-- ✅ **OTP par email** fonctionnel (SMTP Gmail)
-- ✅ **Google OAuth** intégré
-- ✅ **Admin Dashboard** avec gestion des utilisateurs en temps réel
-- ✅ **JWT** sécurisé côté backend
-- ✅ **Build Vite** sans erreurs (389 modules compilés)
-
----
-
-*Nuvia Online Hackathon — Conçu avec passion pour transformer l'expérience culinaire numérique.* 👨‍🍳✨
+*Nuvia - Conçu avec passion pour transformer l'expérience culinaire numérique.* 👨‍🍳✨
