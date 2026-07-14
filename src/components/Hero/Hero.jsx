@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./Hero.css";
+import Chatbot from "../chatbot/frontend/Chatbot";
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -134,6 +135,7 @@ export default function Hero() {
           <span className="sparkle sparkle-4">{"\u2726"}</span>
           <span className="sparkle sparkle-5">{"\u2726"}</span>
         </div>
+        <Chatbot />
       </div>
     </section>
   );
