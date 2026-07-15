@@ -239,11 +239,6 @@
   text-decoration: none;
   overflow: hidden;
   isolation: isolate;
-  box-shadow:
-    0 16px 34px rgba(181, 146, 117, 0.34),
-    0 5px 12px rgba(181, 146, 117, 0.22),
-    inset 0 1px 0 rgba(248, 238, 229, 0.3),
-    inset 0 -1px 0 rgba(181, 146, 117, 0.18);
   z-index: 1;
 }
 
