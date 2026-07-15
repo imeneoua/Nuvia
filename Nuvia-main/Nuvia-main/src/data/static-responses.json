@@ -1,0 +1,18 @@
+[
+  {
+    "keywords": ["bonjour", "salut", "coucou", "hello", "hey", "hi", "yo"],
+    "response": "Bonjour ! Je suis l'assistant Nuvia. Comment puis-je vous aider en cuisine aujourd'hui ?"
+  },
+  {
+    "keywords": ["qui es-tu", "tu es qui", "c'est quoi nuvia"],
+    "response": "Je suis le Chatbot intelligent de Nuvia. Je suis là pour vous aider à trouver des recettes en fonction de ce qu'il vous reste dans le frigo, ou pour répondre à n'importe quelle de vos questions culinaires !"
+  },
+  {
+    "keywords": ["merci", "thanks", "super"],
+    "response": "Avec plaisir ! N'hésitez pas si vous avez d'autres questions."
+  },
+  {
+    "keywords": ["comment ça marche", "aide", "help"],
+    "response": "C'est simple ! Dites-moi quels ingrédients vous avez sous la main (par exemple : 'J'ai des œufs et du lait') et je vous proposerai des recettes. Vous pouvez aussi me poser des questions culinaires directement."
+  }
+]

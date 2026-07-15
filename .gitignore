@@ -1,40 +1,16 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Données massives
+*.csv
+*.db
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-# Python virtual environment
-backend/.venv/
-
-# Environment variables
-backend/.env
-src/components/chatbot/backend/.env
-src/components/chatbot/backend/.venv/
-
+# Python
 __pycache__/
 *.pyc
+env/
+venv/
+.env
 
-# Ignore only the dataset
-src/components/chatbot/backend/data/recipes_data.csv
-
-# Ignore the Tinarecipe.csv file
-src/components/chatbot/backend/data/Tinarecipe.csv
+# Node
+node_modules/
+dist/
+build/
+.DS_Store
