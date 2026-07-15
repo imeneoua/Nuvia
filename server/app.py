@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException, BackgroundTasks
-from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import uvicorn
@@ -14,6 +13,9 @@ from google.oauth2 import id_token
 from google.auth.transport import requests
 app = FastAPI()
 
+import os
+DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'users.db')
+
 # Enable CORS so the React app can call this API
 app.add_middleware(
     CORSMiddleware,
@@ -25,7 +27,7 @@ app.add_middleware(
 
 # Database setup
 def init_db():
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -104,7 +106,7 @@ def register(req: RegisterRequest, background_tasks: BackgroundTasks):
             raise HTTPException(status_code=400, detail="Code OTP invalide ou expiré.")
         
     try:
-        conn = sqlite3.connect('users.db')
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         c.execute("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", (req.name, req.email, req.password))
         conn.commit()
@@ -131,7 +133,7 @@ def register(req: RegisterRequest, background_tasks: BackgroundTasks):
 
 @app.post("/api/auth/login")
 def login(req: LoginRequest):
-    conn = sqlite3.connect('users.db')
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("SELECT id, name, email FROM users WHERE email=? AND password=?", (req.email, req.password))
     user = c.fetchone()
@@ -154,7 +156,7 @@ def google_login(req: GoogleAuthRequest):
         email = idinfo['email']
         name = idinfo.get('name', email.split('@')[0])
         
-        conn = sqlite3.connect('users.db')
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         c.execute("SELECT id, name, email FROM users WHERE email=?", (email,))
         user = c.fetchone()
@@ -177,45 +179,30 @@ def google_login(req: GoogleAuthRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/admin/users", response_class=HTMLResponse)
-def view_users():
-    conn = sqlite3.connect('users.db')
+@app.get("/api/admin/users")
+def get_users():
+    conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
-    c.execute("SELECT id, name, email FROM users")
+    c.execute("SELECT id, name, email, password FROM users")
     users = c.fetchall()
     conn.close()
     
-    html_content = """
-    <html>
-        <head>
-            <title>Admin - Utilisateurs</title>
-            <style>
-                body { font-family: Arial, sans-serif; padding: 20px; }
-                table { border-collapse: collapse; width: 100%; max-width: 600px; }
-                th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-                th { background-color: #f2f2f2; }
-                h1 { color: #333; }
-            </style>
-        </head>
-        <body>
-            <h1>Base de données des utilisateurs (SQLite)</h1>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                </tr>
-    """
-    
-    for u in users:
-        html_content += f"<tr><td>{u[0]}</td><td>{u[1]}</td><td>{u[2]}</td></tr>"
-        
-    html_content += """
-            </table>
-        </body>
-    </html>
-    """
-    return html_content
+    return [
+        {"id": u[0], "name": u[1], "email": u[2], "auth": "Google OAuth" if u[3] == "google-oauth" else "Email/Mot de passe"}
+        for u in users
+    ]
+
+@app.delete("/api/admin/users/{user_id}")
+def delete_user(user_id: int):
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        c.execute("DELETE FROM users WHERE id=?", (user_id,))
+        conn.commit()
+        conn.close()
+        return {"message": "Utilisateur supprimé"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Go up one directory to find the CSV
 csv_path = os.path.join(os.path.dirname(__file__), '..', '1M_Final_Cleaned_V3.csv')

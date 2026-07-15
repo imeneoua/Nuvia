@@ -11,6 +11,7 @@ import Chatbot from "./components/Chatbot/Chatbot";
 import Auth from "./pages/Auth/AuthModal";
 import Profile from "./pages/Profile/Profile";
 import Explore from "./pages/Explore/Explore";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 
 import "./App.css";
@@ -43,8 +44,10 @@ function App() {
         {/* OTHERS */}
         <Route path="/planner" element={<Planner />} />
         <Route path="/profile" element={<Profile />} />
-
         <Route path="/explore" element={<Explore />} />
+        
+        {/* ADMIN */}
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
     </GoogleOAuthProvider>
