@@ -82,7 +82,7 @@ body{
 
 .chat-container {
 
-    position: absolute;
+    position: fixed;
   right: 50px;
   bottom: 10px;   
    z-index: 9999;
@@ -117,7 +117,7 @@ body{
 
     padding:10px;
 
-    background:#a6551a;
+    background: #692f1b;
     border-bottom:1px solid #a6551a;
 
 }
@@ -156,8 +156,8 @@ body{
 }
 
 #chatToggle{
-    background:#a6551a;
-    box-shadow:beige 0px 0px 10px 0px;
+    background:#692f1b;
+    box-shadow: #692f1b 0px 0px 10px 0px;
 }
 
 
@@ -173,7 +173,7 @@ body{
 
 
 
-   .close-btn {
+.close-btn {
   font-size: 10px;
   
   color: white;
@@ -286,7 +286,7 @@ body{
 
     padding:18px;
 
-    background:#a6551a;
+    background:#692f1b;
 
     border-top:1px solid #E7DED2;
 
@@ -344,7 +344,7 @@ body{
 
     background:#EEE6DA;
 
-    color:#8c8a67;
+    color:#692f1b;
 
     display:flex;
     justify-content:center;
@@ -444,7 +444,7 @@ body{
 .user-message{
 
  color:white;
- background-color: #a6551a;
+ background-color: #692f1b;
 
 }
 
