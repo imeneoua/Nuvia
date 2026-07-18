@@ -1,0 +1,26 @@
+/* PALETTE ONLY */
+:root {
+  --blueberry: #783D19;
+  --strawberry: #C4661F;
+  --buttercream: #e0e6fe;
+  --violet: #A9B388; /*text*/
+  --meringe: #F9EBC7; /*text*/
+  --text-dark: #3F2A1A; /*text*/
+}
+
+/* CLEAN RESET */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
