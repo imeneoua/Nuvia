@@ -3,6 +3,8 @@ import "./chatbot.css";
 import botPic from "./assets/chatbotPic.png";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -13,6 +15,7 @@ export default function Chatbot() {
   ]);
 
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const chatBodyRef = useRef(null);
 
   // Auto scroll
@@ -21,21 +24,39 @@ export default function Chatbot() {
       top: chatBodyRef.current.scrollHeight,
       behavior: "smooth",
     });
-  }, [messages]);
+  }, [messages, loading]);
 
-  const sendMessage = () => {
-    if (!input.trim()) return;
+  const sendMessage = async () => {
+    if (!input.trim() || loading) return;
 
     const userMsg = { text: input, sender: "user" };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
+    setLoading(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch(`${API_URL}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMsg.text }),
+      });
+
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        throw new Error(errBody.detail || "Something went wrong");
+      }
+
+      const data = await res.json();
+      setMessages((prev) => [...prev, { text: data.reply, sender: "bot" }]);
+    } catch (err) {
+      console.error(err);
       setMessages((prev) => [
         ...prev,
-        { text: "I'm still learning 🤖", sender: "bot" },
+        { text: "Sorry, I couldn't reach the kitchen 🍳. Try again in a moment.", sender: "bot" },
       ]);
-    }, 600);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -83,6 +104,9 @@ export default function Chatbot() {
                 {msg.text}
               </div>
             ))}
+            {loading && (
+              <div className="message bot-message">Thinking...</div>
+            )}
           </div>
 
           {/* FOOTER */}
@@ -93,9 +117,10 @@ export default function Chatbot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
+              disabled={loading}
             />
 
-            <button onClick={sendMessage}>➤</button>
+            <button onClick={sendMessage} disabled={loading}>➤</button>
           </div>
         </div>
       )}
